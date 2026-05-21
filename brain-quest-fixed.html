@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRAIN QUEST — 100 Things To Research When Bored</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Unbounded:wght@400;700;900&family=DM+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f0ece3;
+  --bg2: #e8e3d8;
+  --bg3: #ffffff;
+  --text: #0f0e0c;
+  --text2: #4a4740;
+  --text3: #8a8680;
+  --accent1: #ff3d00;
+  --accent2: #7c3aed;
+  --accent3: #0ea5e9;
+  --accent4: #16a34a;
+  --accent5: #f59e0b;
+  --border: rgba(15,14,12,0.12);
+  --border2: rgba(15,14,12,0.25);
+  --card-shadow: 0 2px 0px rgba(0,0,0,0.15);
+  --card-shadow-hover: 0 8px 0px rgba(0,0,0,0.2);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+[data-theme="dark"] {
+  --bg: #0c0b09;
+  --bg2: #161410;
+  --bg3: #1e1c18;
+  --text: #f5f0e8;
+  --text2: #b0aa9e;
+  --text3: #706a60;
+  --border: rgba(245,240,232,0.1);
+  --border2: rgba(245,240,232,0.2);
+  --card-shadow: 0 2px 0px rgba(0,0,0,0.5);
+  --card-shadow-hover: 0 8px 0px rgba(0,0,0,0.6);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  overflow-x:hidden;
+  transition:background 0.4s,color 0.4s;
+  cursor:none;
+}
+#cursor{
+  position:fixed;width:20px;height:20px;
+  border:2px solid var(--accent1);
+  border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);transition:width 0.2s,height 0.2s,border-color 0.2s,background 0.15s;
+  mix-blend-mode:multiply;
+}
+[data-theme="dark"] #cursor{mix-blend-mode:screen;}
+#cursor.big{width:50px;height:50px;background:rgba(255,61,0,0.1);}
+#cursor2{
+  position:fixed;width:6px;height:6px;
+  background:var(--accent1);border-radius:50%;pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);transition:transform 0.08s;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:0.6;
+}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2rem;
+  background:var(--bg);
+  border-bottom:1.5px solid var(--border);
+  backdrop-filter:blur(20px);
+  transition:background 0.4s;
+}
+.nav-logo{
+  font-family:var(--font-display);font-size:0.75rem;font-weight:900;
+  letter-spacing:0.08em;color:var(--text);text-transform:uppercase;
+  display:flex;align-items:center;gap:0.5rem;
+}
+.nav-logo span{
+  display:inline-block;width:10px;height:10px;
+  background:var(--accent1);border-radius:50%;
+  animation:pulse 2s ease-in-out infinite;
+}
+.nav-actions{display:flex;align-items:center;gap:1rem;}
+.btn-ghost{
+  background:none;border:1.5px solid var(--border2);
+  color:var(--text);padding:0.4rem 1rem;border-radius:100px;
+  font-family:var(--font-body);font-size:0.8rem;font-weight:500;
+  cursor:none;transition:all 0.2s;letter-spacing:0.03em;
+}
+.btn-ghost:hover{background:var(--text);color:var(--bg);}
+.theme-toggle{
+  background:none;border:1.5px solid var(--border2);
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;transition:all 0.2s;font-size:1rem;
+}
+.theme-toggle:hover{background:var(--text);transform:rotate(20deg);}
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:8rem 2rem 4rem;position:relative;overflow:hidden;
+}
+.hero-bg{position:absolute;inset:0;overflow:hidden;z-index:0;}
+.hero-circle{
+  position:absolute;border-radius:50%;
+  animation:float-circle 8s ease-in-out infinite;
+}
+.hero-circle:nth-child(1){
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,61,0,0.12),transparent 70%);
+  top:-200px;right:-100px;animation-delay:0s;
+}
+.hero-circle:nth-child(2){
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(124,58,237,0.1),transparent 70%);
+  bottom:-100px;left:-100px;animation-delay:-3s;
+}
+.hero-circle:nth-child(3){
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(14,165,233,0.1),transparent 70%);
+  top:30%;left:5%;animation-delay:-6s;
+}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:900px;}
+.hero-eyebrow{
+  font-family:var(--font-mono);font-size:0.75rem;
+  color:var(--accent1);letter-spacing:0.15em;text-transform:uppercase;
+  margin-bottom:1.5rem;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  padding:0.4rem 1rem;border:1.5px solid rgba(255,61,0,0.3);
+  border-radius:100px;background:rgba(255,61,0,0.06);
+}
+.hero-title{
+  font-family:var(--font-display);
+  font-size:clamp(3rem,8vw,7rem);
+  font-weight:900;line-height:0.95;
+  letter-spacing:-0.02em;
+  margin-bottom:1rem;
+}
+.hero-title .line1{display:block;color:var(--text);}
+.hero-title .line2{
+  display:block;
+  -webkit-text-stroke:2px var(--text);
+  color:transparent;
+  position:relative;
+}
+.hero-title .scramble{display:inline-block;}
+.hero-sub{font-size:1.1rem;color:var(--text2);max-width:500px;margin:1.5rem auto 2.5rem;}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--text);color:var(--bg);
+  padding:0.85rem 2rem;border-radius:100px;
+  font-family:var(--font-body);font-size:0.95rem;font-weight:600;
+  cursor:none;border:none;transition:all 0.2s;letter-spacing:0.02em;
+  box-shadow:var(--card-shadow);
+  display:flex;align-items:center;gap:0.5rem;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--card-shadow-hover);}
+.btn-primary .arrow{transition:transform 0.2s;}
+.btn-primary:hover .arrow{transform:translateX(4px);}
+.btn-accent{
+  background:var(--accent1);color:#fff;
+  padding:0.85rem 2rem;border-radius:100px;
+  font-family:var(--font-body);font-size:0.95rem;font-weight:600;
+  cursor:none;border:none;transition:all 0.2s;
+  box-shadow:0 4px 0 rgba(255,61,0,0.3);
+}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 8px 0 rgba(255,61,0,0.3);}
+.hero-stats{
+  display:flex;gap:3rem;justify-content:center;
+  margin-top:4rem;padding-top:3rem;
+  border-top:1.5px solid var(--border);
+}
+.stat{text-align:center;}
+.stat-num{
+  font-family:var(--font-display);font-size:2.5rem;font-weight:900;
+  color:var(--text);display:block;line-height:1;
+}
+.stat-label{font-size:0.8rem;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;}
+.qod-section{padding:5rem 2rem;position:relative;overflow:hidden;}
+.qod-inner{
+  max-width:800px;margin:0 auto;
+  background:var(--text);color:var(--bg);
+  border-radius:24px;padding:3rem;
+  position:relative;overflow:hidden;
+}
+.qod-inner::before{
+  content:'"';position:absolute;
+  font-family:var(--font-display);font-size:20rem;font-weight:900;
+  color:rgba(255,255,255,0.04);top:-2rem;left:1rem;line-height:1;
+  pointer-events:none;
+}
+.qod-label{
+  font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.15em;
+  text-transform:uppercase;color:rgba(255,255,255,0.4);
+  display:flex;align-items:center;gap:0.5rem;margin-bottom:1.5rem;
+}
+.qod-dot{width:6px;height:6px;background:var(--accent5);border-radius:50%;animation:pulse 2s infinite;}
+.qod-text{
+  font-family:var(--font-display);font-size:clamp(1.1rem,3vw,1.6rem);
+  font-weight:700;line-height:1.4;margin-bottom:1.5rem;
+  transition:opacity 0.5s;
+}
+.qod-source{font-size:0.85rem;color:rgba(255,255,255,0.5);font-style:italic;transition:opacity 0.5s;}
+.qod-refresh{
+  position:absolute;top:1.5rem;right:1.5rem;
+  background:rgba(255,255,255,0.1);border:none;
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;color:rgba(255,255,255,0.6);font-size:1rem;
+  transition:all 0.2s;
+}
+.qod-refresh:hover{background:rgba(255,255,255,0.2);transform:rotate(180deg);}
+.section-header{text-align:center;padding:1rem 2rem 3rem;}
+.section-label{
+  font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.15em;
+  color:var(--text3);text-transform:uppercase;margin-bottom:0.75rem;
+  display:block;
+}
+.section-title{
+  font-family:var(--font-display);font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:900;letter-spacing:-0.02em;color:var(--text);
+}
+.section-title em{font-style:normal;-webkit-text-stroke:1.5px var(--text);color:transparent;}
+.modes-section{padding:4rem 2rem;}
+.modes-car-shell{max-width:1100px;margin:0 auto;}
+.modes-car-header{
+  display:flex;align-items:center;justify-content:flex-end;
+  gap:0.5rem;margin-bottom:1.25rem;
+}
+.modes-car-viewport{overflow:hidden;border-radius:24px;}
+.modes-car-track{
+  display:flex;
+  transition:transform 0.42s cubic-bezier(0.4,0,0.2,1);
+  will-change:transform;
+}
+.modes-car-page{
+  min-width:100%;display:grid;
+  grid-template-columns:1fr;
+  gap:1.25rem;box-sizing:border-box;
+}
+.mode-card{
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:20px;padding:2rem;
+  cursor:none;transition:all 0.3s;
+  box-shadow:var(--card-shadow);
+  position:relative;overflow:hidden;
+}
+.mode-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 60%,rgba(255,255,255,0.03));
+  pointer-events:none;
+}
+.mode-card:hover{transform:translateY(-6px);box-shadow:var(--card-shadow-hover);border-color:var(--border2);}
+.mode-icon{font-size:2.5rem;margin-bottom:1rem;display:block;transform-origin:center;transition:transform 0.3s;}
+.mode-card:hover .mode-icon{transform:scale(1.2) rotate(-5deg);}
+.mode-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;color:var(--text);}
+.mode-desc{font-size:0.875rem;color:var(--text2);line-height:1.5;}
+.mode-badge{
+  display:inline-flex;align-items:center;gap:0.3rem;
+  margin-top:1rem;padding:0.3rem 0.75rem;border-radius:100px;
+  font-size:0.7rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;
+  font-family:var(--font-mono);
+}
+.badge-fire{background:rgba(255,61,0,0.12);color:var(--accent1);}
+.badge-vibe{background:rgba(124,58,237,0.12);color:var(--accent2);}
+.badge-brain{background:rgba(14,165,233,0.12);color:var(--accent3);}
+.badge-deep{background:rgba(22,163,74,0.12);color:var(--accent4);}
+#carouselDots{display:none;}
+.game-section{padding:4rem 2rem 6rem;}
+.game-container{max-width:800px;margin:0 auto;}
+.deck-tabs{display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap;}
+.deck-tab{
+  padding:0.5rem 1.25rem;border-radius:100px;
+  border:1.5px solid var(--border);
+  background:var(--bg3);color:var(--text2);
+  font-family:var(--font-body);font-size:0.85rem;font-weight:500;
+  cursor:none;transition:all 0.2s;
+}
+.deck-tab.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.deck-tab:hover:not(.active){border-color:var(--border2);}
+.q-card-wrap{perspective:1000px;margin-bottom:1.5rem;}
+.q-card{
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:24px;padding:3rem;
+  position:relative;overflow:hidden;
+  transition:all 0.4s;
+  box-shadow:var(--card-shadow);
+  transform-style:preserve-3d;
+  min-height:280px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.q-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--q-color,var(--accent1));
+  border-radius:24px 24px 0 0;
+}
+.q-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.q-category{
+  font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;
+  color:var(--q-color,var(--accent1));text-transform:uppercase;
+  background:rgba(255,61,0,0.08);padding:0.3rem 0.75rem;
+  border-radius:100px;transition:background 0.3s;
+}
+.q-counter{font-family:var(--font-mono);font-size:0.8rem;color:var(--text3);}
+.q-text{
+  font-family:var(--font-display);
+  font-size:clamp(1.2rem,3vw,1.8rem);
+  font-weight:700;line-height:1.3;
+  color:var(--text);flex:1;
+  display:flex;align-items:center;
+  transition:opacity 0.3s;
+}
+.q-hint{
+  font-size:0.8rem;color:var(--text3);
+  font-style:italic;margin-top:1.5rem;
+  padding-top:1.5rem;border-top:1px solid var(--border);
+}
+.q-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;}
+.btn-next{
+  flex:1;background:var(--text);color:var(--bg);
+  padding:0.9rem 2rem;border-radius:100px;
+  font-family:var(--font-body);font-size:0.95rem;font-weight:600;
+  cursor:none;border:none;transition:all 0.25s;
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  box-shadow:var(--card-shadow);
+}
+.btn-next:hover{transform:translateY(-2px);box-shadow:var(--card-shadow-hover);}
+.btn-shuffle{
+  background:none;border:1.5px solid var(--border2);
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;font-size:1.1rem;transition:all 0.25s;color:var(--text);
+}
+.btn-shuffle:hover{background:var(--text);color:var(--bg);border-color:var(--text);}
+.btn-save{
+  background:none;border:1.5px solid var(--border2);
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;font-size:1rem;transition:all 0.25s;color:var(--text);
+}
+.btn-save.saved{background:var(--accent5);border-color:var(--accent5);color:#fff;}
+.btn-save:hover:not(.saved){background:var(--accent5);border-color:var(--accent5);color:#fff;}
+.progress-wrap{margin-bottom:2rem;}
+.progress-label{display:flex;justify-content:space-between;font-size:0.75rem;color:var(--text3);font-family:var(--font-mono);margin-bottom:0.5rem;}
+.progress-bar{height:4px;background:var(--bg2);border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--accent1);border-radius:100px;transition:width 0.5s cubic-bezier(0.4,0,0.2,1);}
+.rapid-section{
+  background:var(--text);color:var(--bg);
+  padding:5rem 2rem;position:relative;overflow:hidden;
+}
+[data-theme="dark"] .rapid-section{background:var(--bg2);}
+.rapid-inner{max-width:700px;margin:0 auto;text-align:center;}
+.rapid-timer{
+  font-family:var(--font-display);font-size:5rem;font-weight:900;
+  line-height:1;margin-bottom:1rem;color:var(--bg);
+  animation:timer-pulse 1s ease-in-out infinite;
+}
+[data-theme="dark"] .rapid-timer{color:var(--text);}
+.rapid-timer.urgent{color:var(--accent1);animation:timer-shake 0.3s ease-in-out infinite;}
+.rapid-q{font-family:var(--font-display);font-size:clamp(1.4rem,4vw,2.2rem);font-weight:700;color:var(--bg);line-height:1.3;margin-bottom:2rem;}
+[data-theme="dark"] .rapid-q{color:var(--text);}
+.rapid-score{font-family:var(--font-mono);font-size:0.85rem;color:rgba(255,255,255,0.5);letter-spacing:0.1em;margin-bottom:3rem;}
+[data-theme="dark"] .rapid-score{color:var(--text3);}
+.rapid-controls{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-rapid-start{
+  background:var(--accent1);color:#fff;
+  padding:1rem 2.5rem;border-radius:100px;
+  font-family:var(--font-display);font-size:1rem;font-weight:700;
+  cursor:none;border:none;transition:all 0.2s;letter-spacing:0.02em;
+  box-shadow:0 4px 0 rgba(255,61,0,0.4);
+}
+.btn-rapid-start:hover{transform:translateY(-2px);box-shadow:0 8px 0 rgba(255,61,0,0.4);}
+.btn-got-it{
+  background:rgba(255,255,255,0.15);color:var(--bg);
+  padding:1rem 2rem;border-radius:100px;
+  font-family:var(--font-body);font-size:0.95rem;font-weight:600;
+  cursor:none;border:1.5px solid rgba(255,255,255,0.3);transition:all 0.2s;
+}
+[data-theme="dark"] .btn-got-it{color:var(--text);border-color:var(--border2);}
+.btn-got-it:hover{background:rgba(255,255,255,0.25);}
+.btn-pass{
+  background:transparent;color:rgba(255,255,255,0.4);
+  padding:1rem 1.5rem;border-radius:100px;
+  font-family:var(--font-body);font-size:0.85rem;font-weight:500;
+  cursor:none;border:1.5px solid rgba(255,255,255,0.15);transition:all 0.2s;
+}
+[data-theme="dark"] .btn-pass{color:var(--text3);border-color:var(--border);}
+.btn-pass:hover{border-color:rgba(255,255,255,0.3);}
+.rapid-bg-anim{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.rapid-blob{position:absolute;border-radius:50%;animation:blob-move 6s ease-in-out infinite;}
+.topics-section{padding:5rem 2rem;}
+.topics-filter{display:flex;gap:0.5rem;flex-wrap:wrap;max-width:1100px;margin:0 auto 2rem;}
+.filter-btn{
+  padding:0.45rem 1rem;border-radius:100px;
+  border:1.5px solid var(--border);
+  background:var(--bg3);color:var(--text2);
+  font-size:0.8rem;font-weight:500;font-family:var(--font-body);
+  cursor:none;transition:all 0.2s;
+}
+.filter-btn.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.filter-btn:hover:not(.active){border-color:var(--border2);}
+.carousel-shell{max-width:1100px;margin:0 auto;position:relative;}
+.carousel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.carousel-count{font-family:var(--font-mono);font-size:0.75rem;color:var(--text3);letter-spacing:0.08em;}
+.carousel-arrows{display:flex;gap:0.5rem;}
+.carr-btn{
+  width:40px;height:40px;border-radius:50%;
+  border:1.5px solid var(--border2);background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;font-size:1rem;color:var(--text);
+  transition:all 0.2s;box-shadow:var(--card-shadow);
+}
+.carr-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text);transform:scale(1.08);}
+.carr-btn:disabled{opacity:0.3;pointer-events:none;}
+.carousel-viewport{overflow:hidden;border-radius:20px;position:relative;}
+.carousel-track{
+  display:flex;
+  gap:0.85rem;
+  transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);
+  will-change:transform;
+}
+.topic-pill{
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:14px;padding:0.85rem 1rem;
+  cursor:none;transition:all 0.22s;
+  display:flex;align-items:flex-start;gap:0.6rem;
+  box-shadow:var(--card-shadow);
+}
+.topic-pill:hover{transform:translateY(-3px);box-shadow:var(--card-shadow-hover);border-color:var(--border2);}
+.topic-num{font-family:var(--font-mono);font-size:0.65rem;color:var(--text3);min-width:22px;padding-top:0.1rem;flex-shrink:0;}
+.topic-name{font-size:0.85rem;font-weight:500;color:var(--text);line-height:1.35;}
+.topic-cat{font-family:var(--font-mono);font-size:0.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.05em;margin-top:0.2rem;}
+.carousel-dots{display:flex;gap:0.4rem;justify-content:center;margin-top:1.25rem;flex-wrap:wrap;}
+.c-dot{width:8px;height:8px;border-radius:50%;background:var(--border2);border:none;cursor:none;transition:all 0.25s;padding:0;}
+.c-dot.active{background:var(--text);width:24px;border-radius:4px;}
+.c-dot:hover:not(.active){background:var(--text2);}
+@keyframes slide-fresh{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+.usecase-section{padding:5rem 2rem;}
+.usecase-inner{max-width:700px;margin:0 auto;text-align:center;}
+.usecase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-top:2.5rem;}
+.usecase-card{
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:16px;padding:1.5rem 1rem;
+  cursor:none;transition:all 0.25s;
+  box-shadow:var(--card-shadow);text-align:center;
+}
+.usecase-card:hover,.usecase-card.active{transform:translateY(-4px);box-shadow:var(--card-shadow-hover);border-color:var(--border2);}
+.usecase-card.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.usecase-emoji{font-size:2rem;display:block;margin-bottom:0.5rem;}
+.usecase-name{font-size:0.85rem;font-weight:600;color:inherit;}
+.context-result{
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:20px;padding:2rem;max-width:700px;margin:2rem auto 0;
+  display:none;animation:fadeup 0.4s ease;
+}
+.context-result.show{display:block;}
+.cr-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;}
+.cr-title{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:1rem;}
+.cr-questions{list-style:none;}
+.cr-questions li{padding:0.75rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;color:var(--text2);display:flex;align-items:flex-start;gap:0.75rem;}
+.cr-questions li::before{content:'→';color:var(--accent1);flex-shrink:0;margin-top:0.1rem;}
+.cr-questions li:last-child{border-bottom:none;}
+.saved-section{padding:5rem 2rem;}
+.saved-inner{max-width:700px;margin:0 auto;}
+.saved-carousel{margin-top:1.5rem;position:relative;}
+.saved-car-viewport{overflow:hidden;border-radius:20px;}
+.saved-car-track{display:flex;transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
+.saved-car-slide{min-width:100%;box-sizing:border-box;padding:0 2px;}
+.saved-car-card{
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:20px;padding:2rem 2rem 1.5rem;
+  display:flex;flex-direction:column;gap:1.25rem;
+  box-shadow:var(--card-shadow);position:relative;overflow:hidden;
+}
+.saved-car-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent5);border-radius:20px 20px 0 0;}
+.saved-car-label{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.12em;color:var(--accent5);text-transform:uppercase;display:flex;align-items:center;gap:0.4rem;}
+.saved-car-q{font-family:var(--font-display);font-size:clamp(1rem,2.5vw,1.35rem);font-weight:700;line-height:1.35;color:var(--text);}
+.saved-car-actions{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;border-top:1px solid var(--border);}
+.saved-car-nav{display:flex;gap:0.5rem;align-items:center;}
+.saved-car-btn{
+  width:38px;height:38px;border-radius:50%;
+  border:1.5px solid var(--border2);background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;font-size:0.9rem;color:var(--text);transition:all 0.2s;
+}
+.saved-car-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text);}
+.saved-car-btn:disabled{opacity:0.3;pointer-events:none;}
+.saved-car-counter{font-family:var(--font-mono);font-size:0.75rem;color:var(--text3);letter-spacing:0.06em;min-width:60px;text-align:center;}
+.saved-car-remove{
+  background:none;border:1.5px solid var(--border);
+  border-radius:100px;padding:0.4rem 1rem;
+  font-family:var(--font-body);font-size:0.78rem;color:var(--text3);
+  cursor:none;transition:all 0.2s;
+}
+.saved-car-remove:hover{border-color:var(--accent1);color:var(--accent1);}
+.saved-car-dots{display:flex;gap:0.35rem;justify-content:center;margin-top:1rem;flex-wrap:wrap;}
+.sv-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);border:none;cursor:none;transition:all 0.25s;padding:0;}
+.sv-dot.active{background:var(--accent5);width:20px;border-radius:4px;}
+.empty-state{text-align:center;padding:3rem;color:var(--text3);font-size:0.95rem;}
+.empty-icon{font-size:3rem;display:block;margin-bottom:1rem;opacity:0.4;}
+.marquee-section{padding:2rem 0;overflow:hidden;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);}
+.marquee-track{display:flex;gap:3rem;animation:marquee 25s linear infinite;white-space:nowrap;width:max-content;}
+.marquee-track:hover{animation-play-state:paused;}
+.marquee-item{font-family:var(--font-display);font-size:0.9rem;font-weight:700;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;display:flex;align-items:center;gap:1rem;}
+.marquee-sep{color:var(--accent1);font-size:1.2rem;}
+footer{padding:4rem 2rem 2rem;border-top:1.5px solid var(--border);text-align:center;}
+.footer-logo{font-family:var(--font-display);font-size:2rem;font-weight:900;color:var(--text);margin-bottom:0.5rem;}
+.footer-sub{font-size:0.85rem;color:var(--text3);margin-bottom:2rem;}
+.footer-links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;}
+.footer-links a{font-size:0.85rem;color:var(--text2);text-decoration:none;cursor:none;}
+.footer-links a:hover{color:var(--text);}
+.footer-copy{font-size:0.75rem;color:var(--text3);font-family:var(--font-mono);}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+@keyframes float-circle{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(-20px,30px) scale(1.05);}66%{transform:translate(20px,-20px) scale(0.95);}}
+@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@keyframes timer-pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
+@keyframes timer-shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+@keyframes blob-move{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,-20px) scale(1.1);}}
+@keyframes fadeup{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes card-in{from{opacity:0;transform:translateY(20px) rotateX(-5deg);}to{opacity:1;transform:translateY(0) rotateX(0);}}
+@keyframes flip-out{to{opacity:0;transform:translateY(-20px) rotateX(5deg);}}
+@keyframes confetti-fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(120vh) rotate(720deg);opacity:0;}}
+@keyframes spin{to{transform:rotate(360deg);}}
+.q-card.entering{animation:card-in 0.4s cubic-bezier(0.4,0,0.2,1) forwards;}
+.q-card.leaving{animation:flip-out 0.3s ease forwards;}
+@media(max-width:600px){nav{padding:1rem;}.hero-stats{gap:1.5rem;}.q-card{padding:2rem 1.5rem;}.rapid-timer{font-size:4rem;}}
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+.confetti-piece{position:fixed;width:10px;height:10px;pointer-events:none;z-index:1000;border-radius:2px;animation:confetti-fall 1.5s ease-in forwards;}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+<div id="cursor2"></div>
+<nav>
+  <div class="nav-logo"><span></span> Brain Quest</div>
+  <div class="nav-actions">
+    <button class="btn-ghost" onclick="scrollTo({top:document.getElementById('game').offsetTop,behavior:'smooth'})">Play ↓</button>
+    <button class="btn-ghost" onclick="scrollTo({top:document.getElementById('topics').offsetTop,behavior:'smooth'})">100 Topics</button>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
+  </div>
+</nav>
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-circle"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span>✦</span> 100 rabbit holes await</div>
+    <h1 class="hero-title">
+      <span class="line1">BRAIN</span>
+      <span class="line2"><span class="scramble" id="scramble-title">QUEST</span></span>
+    </h1>
+    <p class="hero-sub">260 rabbit holes across 21 categories. For dates, friendships, elevator pitches, deep thoughts at 2am — and understanding how the world actually works.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="scrollTo({top:document.getElementById('game').offsetTop,behavior:'smooth'})">Start Exploring <span class="arrow">→</span></button>
+      <button class="btn-accent" onclick="document.getElementById('rapid').scrollIntoView({behavior:'smooth'})">⚡ Rapid Fire</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" id="countUp1">0</span><span class="stat-label">Topics</span></div>
+      <div class="stat"><span class="stat-num" id="countUp2">0</span><span class="stat-label">Questions</span></div>
+      <div class="stat"><span class="stat-num" id="countUp3">∞</span><span class="stat-label">Conversations</span></div>
+    </div>
+  </div>
+</section>
+<section class="qod-section">
+  <div class="qod-inner">
+    <div class="qod-label"><span class="qod-dot"></span> Quote of the Day</div>
+    <p class="qod-text" id="qodText">Loading...</p>
+    <p class="qod-source" id="qodSource">— </p>
+    <button class="qod-refresh" onclick="cycleQuote()" title="New quote">↻</button>
+  </div>
+</section>
+<div class="marquee-section"><div class="marquee-track" id="marqueeTrack"></div></div>
+<section class="modes-section">
+  <div class="section-header">
+    <span class="section-label">pick your vibe</span>
+    <h2 class="section-title">Choose Your <em>Mode</em></h2>
+  </div>
+  <div class="modes-car-shell">
+    <div class="modes-car-header">
+      <button class="carr-btn" id="modesPrev" onclick="modesPrev()">&#8592;</button>
+      <button class="carr-btn" id="modesNext" onclick="modesNext()">&#8594;</button>
+    </div>
+    <div class="modes-car-viewport">
+      <div class="modes-car-track" id="modesTrack"></div>
+    </div>
+  </div>
+</section>
+<section class="usecase-section">
+  <div class="usecase-inner">
+    <div class="section-header">
+      <span class="section-label">context matters</span>
+      <h2 class="section-title">What's the <em>Occasion?</em></h2>
+    </div>
+    <div class="usecase-grid">
+      <div class="usecase-card" onclick="setUseCase('date')" data-case="date"><span class="usecase-emoji">💝</span><div class="usecase-name">First Date</div></div>
+      <div class="usecase-card" onclick="setUseCase('friends')" data-case="friends"><span class="usecase-emoji">🫂</span><div class="usecase-name">Friends</div></div>
+      <div class="usecase-card" onclick="setUseCase('elevator')" data-case="elevator"><span class="usecase-emoji">🏢</span><div class="usecase-name">Elevator Pitch</div></div>
+      <div class="usecase-card" onclick="setUseCase('smalltalk')" data-case="smalltalk"><span class="usecase-emoji">☕</span><div class="usecase-name">Small Talk</div></div>
+      <div class="usecase-card" onclick="setUseCase('solo')" data-case="solo"><span class="usecase-emoji">🌙</span><div class="usecase-name">Bored Alone</div></div>
+      <div class="usecase-card" onclick="setUseCase('deep')" data-case="deep"><span class="usecase-emoji">🌊</span><div class="usecase-name">Deep Dive</div></div>
+    </div>
+    <div class="context-result" id="contextResult">
+      <div class="cr-label" id="crLabel">Suggested for this vibe</div>
+      <div class="cr-title" id="crTitle"></div>
+      <ul class="cr-questions" id="crList"></ul>
+    </div>
+  </div>
+</section>
+<section class="game-section" id="game">
+  <div class="section-header">
+    <span class="section-label">main deck</span>
+    <h2 class="section-title">The <em>Question</em> Deck</h2>
+  </div>
+  <div class="game-container">
+    <div class="deck-tabs" id="deckTabs"></div>
+    <div class="progress-wrap">
+      <div class="progress-label">
+        <span id="progressLabel">Question 1 of —</span>
+        <span id="progressPct">0%</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    </div>
+    <div class="q-card-wrap">
+      <div class="q-card entering" id="questionCard">
+        <div class="q-meta">
+          <span class="q-category" id="qCategory">Science</span>
+          <span class="q-counter" id="qCounter">01</span>
+        </div>
+        <div class="q-text" id="questionText">Loading your first question...</div>
+        <div class="q-hint" id="qHint"></div>
+      </div>
+    </div>
+    <div class="q-actions">
+      <button class="btn-save" id="saveBtn" onclick="toggleSave()" title="Save this question">★</button>
+      <button class="btn-next" onclick="nextQuestion()">Next Question <span class="arrow">→</span></button>
+      <button class="btn-shuffle" onclick="shuffleAll()" title="Shuffle deck">⇌</button>
+    </div>
+  </div>
+</section>
+<section class="rapid-section" id="rapid">
+  <div class="rapid-bg-anim" id="rapidBg"></div>
+  <div class="rapid-inner" style="position:relative;z-index:1;">
+    <div class="section-header" style="margin-bottom:2rem;">
+      <span class="section-label" style="color:rgba(255,255,255,0.4)">speed mode</span>
+      <h2 class="section-title" style="color:var(--bg)">⚡ Rapid <em style="-webkit-text-stroke-color:var(--bg)">Fire</em></h2>
+    </div>
+    <div id="rapidIdle">
+      <p style="color:rgba(255,255,255,0.6);margin-bottom:2rem;font-size:1rem;">30 seconds. Answer or pass. See how many you can get.</p>
+      <button class="btn-rapid-start" onclick="startRapidFire()">START RAPID FIRE</button>
+    </div>
+    <div id="rapidGame" style="display:none;">
+      <div class="rapid-timer" id="rapidTimer">30</div>
+      <div class="rapid-q" id="rapidQ">Ready?</div>
+      <div class="rapid-score" id="rapidScore">SCORE: 0 | PASSED: 0</div>
+      <div class="rapid-controls">
+        <button class="btn-got-it" onclick="rapidAnswer(true)">✓ GOT IT</button>
+        <button class="btn-pass" onclick="rapidAnswer(false)">PASS →</button>
+      </div>
+    </div>
+    <div id="rapidEnd" style="display:none;">
+      <div class="rapid-timer" id="rapidFinalScore">0</div>
+      <div class="rapid-q" id="rapidResult">questions answered!</div>
+      <div class="rapid-score" id="rapidEndStats"></div>
+      <div class="rapid-controls">
+        <button class="btn-rapid-start" onclick="startRapidFire()">PLAY AGAIN</button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="topics-section" id="topics">
+  <div class="section-header">
+    <span class="section-label">the full list</span>
+    <h2 class="section-title">All <em>100</em> Topics</h2>
+  </div>
+  <div class="topics-filter" id="topicsFilter"></div>
+  <div class="carousel-shell">
+    <div class="carousel-header">
+      <span class="carousel-count" id="carouselCount">Page 1 of 5 &middot; 100 topics</span>
+      <div class="carousel-arrows">
+        <button class="carr-btn" id="carrPrev" onclick="carouselPrev()" title="Previous page">&#8592;</button>
+        <button class="carr-btn" id="carrNext" onclick="carouselNext()" title="Next page">&#8594;</button>
+      </div>
+    </div>
+    <div class="carousel-viewport" id="carouselViewport">
+      <div class="carousel-track" id="carouselTrack"></div>
+    </div>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+</section>
+<section class="saved-section">
+  <div class="saved-inner">
+    <div class="section-header">
+      <span class="section-label">your collection</span>
+      <h2 class="section-title">Saved <em>Questions</em></h2>
+    </div>
+    <div id="savedList">
+      <div class="empty-state"><span class="empty-icon">⭐</span><p>Star questions to save them here</p></div>
+    </div>
+  </div>
+</section>
+<div class="marquee-section"><div class="marquee-track" id="marqueeTrack2" style="animation-direction:reverse;"></div></div>
+<footer>
+  <div class="footer-logo">BRAIN QUEST ✦</div>
+  <p class="footer-sub">260 rabbit holes across 21 categories for curious humans everywhere</p>
+  <p class="footer-copy">Shuffle daily. Think deeply. Converse boldly. ∞</p>
+</footer>
+<script>
+const CATEGORIES = {
+  science:    { label: 'Science & Space',       color: '#0ea5e9', emoji: '🔭' },
+  culture:    { label: 'Culture & Art',          color: '#7c3aed', emoji: '🎨' },
+  psychology: { label: 'Psychology',             color: '#ec4899', emoji: '🧠' },
+  ancient:    { label: 'Ancient & Mysterious',   color: '#f59e0b', emoji: '🏛️' },
+  nature:     { label: 'Nature & Body',          color: '#16a34a', emoji: '🌿' },
+  power:      { label: 'Power & Politics',       color: '#ff3d00', emoji: '⚡' },
+  money:      { label: 'Money & Work',           color: '#eab308', emoji: '💰' },
+  history:    { label: 'History',                color: '#a855f7', emoji: '📜' },
+  philosophy: { label: 'Philosophy',             color: '#64748b', emoji: '🌀' },
+  tech:       { label: 'Tech & AI',              color: '#06b6d4', emoji: '🤖' },
+  society:    { label: 'Society',                color: '#f97316', emoji: '🌐' },
+  religion:   { label: 'Religion & Belief',      color: '#8b5cf6', emoji: '✨' },
+  media:      { label: 'Media & Influence',      color: '#db2777', emoji: '📱' },
+  cities:     { label: 'Cities & Property',      color: '#059669', emoji: '🏙️' },
+  law:        { label: 'Law & Crime',            color: '#dc2626', emoji: '⚖️' },
+  health:     { label: 'Health & Medicine',      color: '#0d9488', emoji: '🏥' },
+  education:  { label: 'Education & Learning',   color: '#7c3aed', emoji: '📚' },
+  class:      { label: 'Class & Status',         color: '#92400e', emoji: '👑' },
+  gender:     { label: 'Gender & Family',        color: '#be185d', emoji: '🫂' },
+  mysg:       { label: 'Malaysia & Singapore',   color: '#15803d', emoji: '🌺' },
+  smalldeep:  { label: 'Small but Deep',         color: '#7c3aed', emoji: '🔍' },
+};
+
+const ALL_TOPICS = [
+  {id:1,text:'String theory',cat:'science',hint:'What if the universe is made of tiny vibrating strings of energy?'},
+  {id:2,text:'The simulation hypothesis',cat:'science',hint:'Are we living in a computer program? Who is the programmer?'},
+  {id:3,text:'Dark matter & dark energy',cat:'science',hint:'We can\'t see it, but it\'s 95% of the universe.'},
+  {id:4,text:'Quantum entanglement',cat:'science',hint:'Einstein called it "spooky action at a distance."'},
+  {id:5,text:'Time dilation & relativity',cat:'science',hint:'Time literally passes slower near a black hole.'},
+  {id:6,text:'The Fermi paradox',cat:'science',hint:'If aliens exist, why haven\'t we heard from them?'},
+  {id:7,text:'Parallel universes',cat:'science',hint:'Every decision might create a new branch of reality.'},
+  {id:8,text:'Space-time anomalies',cat:'science',hint:'Black holes, wormholes, and the fabric of spacetime.'},
+  {id:9,text:'The measurement problem in quantum physics',cat:'science',hint:'Does observation actually collapse reality? What does that even mean?'},
+  {id:10,text:'The origin of life',cat:'science',hint:'We don\'t actually know how life began. Every theory has a gap.'},
+  {id:11,text:'Transhumanism',cat:'tech',hint:'What happens when humans merge with machines?'},
+  {id:12,text:'Artificial consciousness',cat:'tech',hint:'Can a machine ever truly feel? How would we know?'},
+  {id:13,text:'AI ethics',cat:'tech',hint:'If an AI feels pain, does that change everything?'},
+  {id:14,text:'AI hallucinations',cat:'tech',hint:'Why do large language models confidently say things that are false?'},
+  {id:15,text:'AI job displacement',cat:'tech',hint:'Not just blue collar. Lawyers, radiologists, coders. Who is safe?'},
+  {id:16,text:'Deepfakes and trust',cat:'tech',hint:'When seeing is no longer believing, what anchors reality?'},
+  {id:17,text:'Surveillance capitalism',cat:'tech',hint:'Your data is the product. Your attention is the inventory.'},
+  {id:18,text:'Brain-computer interfaces',cat:'tech',hint:'Neuralink, Synchron, and the question of who you are when your brain is online.'},
+  {id:19,text:'Synthetic biology',cat:'tech',hint:'Engineering life. Designing organisms. Playing god with a CAD tool.'},
+  {id:20,text:'Cybersecurity as national security',cat:'tech',hint:'The next war won\'t start with guns. It will start with code.'},
+  {id:21,text:'Digital ID systems',cat:'tech',hint:'Who controls your identity online? And what happens when they get hacked?'},
+  {id:22,text:'Social credit systems',cat:'tech',hint:'China built one. Other countries are building variants. Is it always dystopian?'},
+  {id:23,text:'Why digital transformation fails',cat:'tech',hint:'Most government digitization projects fail. Why? Who benefits from the status quo?'},
+  {id:24,text:'Platform monopolies',cat:'tech',hint:'Google, Meta, Amazon. How did we allow so much power to concentrate?'},
+  {id:25,text:'Open-source vs closed-source AI',cat:'tech',hint:'Who should control the most powerful tool ever built?'},
+  {id:26,text:'Political bias in cartography',cat:'culture',hint:'Every map is a political statement. Who draws the borders?'},
+  {id:27,text:'Street art movements',cat:'culture',hint:'Graffiti as protest, identity, and reclamation of space.'},
+  {id:28,text:'Banksy and anti-capitalist branding',cat:'culture',hint:'Is Banksy one person? And can anti-capitalism be a brand?'},
+  {id:29,text:'Hidden symbols in famous logos',cat:'culture',hint:'The arrow in FedEx. The bear in Toblerone. What else are we missing?'},
+  {id:30,text:'The history of tattoos',cat:'culture',hint:'Tattoos predate writing. What did they mean across cultures?'},
+  {id:31,text:'Languages that are disappearing',cat:'culture',hint:'A language dies every 14 days. What is lost with it?'},
+  {id:32,text:'The origins of common superstitions',cat:'culture',hint:'Who decided black cats were unlucky? And why did it stick?'},
+  {id:33,text:'Myths humans still believe',cat:'culture',hint:'We only use 10% of our brain. But why do myths spread even after debunking?'},
+  {id:34,text:'Meme linguistics',cat:'culture',hint:'Gen Alpha speaks in reference frames. Memes are evolving language.'},
+  {id:35,text:'Code-switching',cat:'culture',hint:'Why people change how they speak depending on who\'s in the room.'},
+  {id:36,text:'Food as identity',cat:'culture',hint:'What we eat signals where we\'re from, who we are, what we believe.'},
+  {id:37,text:'Why horror reflects social anxiety',cat:'culture',hint:'Every era\'s horror reflects its fears. What does ours reveal?'},
+  {id:38,text:'Architecture as power',cat:'culture',hint:'Who gets the grand buildings? What does design communicate about control?'},
+  {id:39,text:'Fashion as class signalling',cat:'culture',hint:'Old money wears quiet luxury. New money wears logos. What does that tell us?'},
+  {id:40,text:'Why "old money aesthetic" became popular',cat:'culture',hint:'Why do young people romanticize an elite they can never access?'},
+  {id:41,text:'Cognitive biases',cat:'psychology',hint:'Confirmation bias. Availability bias. Dunning-Kruger. We are not rational.'},
+  {id:42,text:'Cult psychology',cat:'psychology',hint:'Smart people join cults. Here\'s exactly how it happens.'},
+  {id:43,text:'Mandela Effect examples',cat:'psychology',hint:'Thousands of people share the same false memory. Is that possible?'},
+  {id:44,text:'The psychology of déjà vu',cat:'psychology',hint:'A glitch in memory or a peek at another dimension?'},
+  {id:45,text:'Dreams and lucid dreaming',cat:'psychology',hint:'Freud, Jung, and why your brain creates full movies every night.'},
+  {id:46,text:'Near-death experiences',cat:'psychology',hint:'Millions report similar experiences. What does neuroscience say?'},
+  {id:47,text:'Why music gives chills',cat:'psychology',hint:'Only some people feel it. It\'s called frisson. What makes you one of them?'},
+  {id:48,text:'Imposter syndrome',cat:'psychology',hint:'Why high achievers feel like frauds more than anyone else.'},
+  {id:49,text:'Learned helplessness',cat:'psychology',hint:'When people stop trying because they believe nothing will change.'},
+  {id:50,text:'Attachment styles',cat:'psychology',hint:'Secure, anxious, avoidant, disorganized. Your childhood shapes your relationships.'},
+  {id:51,text:'Why people lie',cat:'psychology',hint:'Most lies are social lubricant. But some are self-destruction. Why?'},
+  {id:52,text:'Why people gossip',cat:'psychology',hint:'Gossip is social bonding, threat detection, and reputation management.'},
+  {id:53,text:'Why people ghost',cat:'psychology',hint:'Ghosting isn\'t random. There are patterns and psychological drivers.'},
+  {id:54,text:'Why people stay in bad situations',cat:'psychology',hint:'Sunk cost. Fear of change. Identity. It\'s never simple.'},
+  {id:55,text:'Shame vs guilt psychology',cat:'psychology',hint:'Guilt says "I did something bad." Shame says "I am bad." The difference is everything.'},
+  {id:56,text:'Gaslighting',cat:'psychology',hint:'It\'s not just a buzzword. It\'s a precise psychological technique with a history.'},
+  {id:57,text:'Why humans fear death',cat:'psychology',hint:'Terror management theory. Every culture. Every religion. All the same driver.'},
+  {id:58,text:'Why nostalgia is powerful',cat:'psychology',hint:'We remember the past as better than it was. Who profits from this?'},
+  {id:59,text:'The science of laughter',cat:'psychology',hint:'Humans laugh 17 times a day. Animals do too. But why?'},
+  {id:60,text:'Why people need belonging',cat:'psychology',hint:'Ostracism activates the same brain region as physical pain.'},
+  {id:61,text:'The Voynich Manuscript',cat:'ancient',hint:'Nobody can read it. It might be the world\'s most mysterious book.'},
+  {id:62,text:'Gobekli Tepe',cat:'ancient',hint:'A temple built 6,000 years before Stonehenge. It rewrites human prehistory.'},
+  {id:63,text:'The Bronze Age collapse',cat:'ancient',hint:'Multiple civilizations vanished within decades. We still don\'t know why.'},
+  {id:64,text:'The Antikythera mechanism',cat:'ancient',hint:'A 2000-year-old analogue computer. Found in a shipwreck. Who built it?'},
+  {id:65,text:'Atlantis as myth vs pseudo-history',cat:'ancient',hint:'Plato was very specific. But is it allegory, memory, or invention?'},
+  {id:66,text:'Ancient astronomy',cat:'ancient',hint:'Stonehenge, Nazca lines, the pyramids. Aligned to what, and why?'},
+  {id:67,text:'The history of secret societies',cat:'ancient',hint:'Freemasons, Illuminati — and the ones we don\'t know about yet.'},
+  {id:68,text:'Witch trials psychology',cat:'ancient',hint:'Mass hysteria or deliberate persecution? Why mostly women?'},
+  {id:69,text:'The Sea Peoples',cat:'ancient',hint:'Mystery invaders who may have destroyed Bronze Age civilisation. Identity unknown.'},
+  {id:70,text:'Untranslated ancient scripts',cat:'ancient',hint:'Proto-Elamite, Linear A, the Indus script. What secrets are locked inside?'},
+  {id:71,text:'Why some governments are competent',cat:'power',hint:'Singapore. Rwanda. Estonia. What do they have that others don\'t?'},
+  {id:72,text:'How corruption becomes normalized',cat:'power',hint:'It starts small. A gift. A favour. A blind eye. Then it\'s the system.'},
+  {id:73,text:'Why voters support populists',cat:'power',hint:'Why do people vote against their economic interests?'},
+  {id:74,text:'Gerrymandering and malapportionment',cat:'power',hint:'How district drawing decides elections before a single vote is cast.'},
+  {id:75,text:'How political parties build networks',cat:'power',hint:'Grassroots, patronage, machine politics. The unseen engine of power.'},
+  {id:76,text:'Why democracies backslide',cat:'power',hint:'Hungary, Turkey, Venezuela. The pattern is always the same.'},
+  {id:77,text:'The "deep state" — myth vs reality',cat:'power',hint:'Administrative continuity is real. Shadowy conspiracy is not. Where\'s the line?'},
+  {id:78,text:'How federalism works',cat:'power',hint:'Malaysia, US, Germany, India. Why divide power between centre and states?'},
+  {id:79,text:'Why policy fails even when the idea is good',cat:'power',hint:'Implementation is harder than legislation. Incentives always win.'},
+  {id:80,text:'Political ideologies explained',cat:'power',hint:'Left, right, liberal, conservative — why these words mean different things in Asia vs the West.'},
+  {id:81,text:'Why small countries can outperform large ones',cat:'power',hint:'Size is not destiny. Singapore and New Zealand prove it.'},
+  {id:82,text:'The US-China rivalry',cat:'power',hint:'Trade, tech, Taiwan. Who shapes the next century?'},
+  {id:83,text:'The South China Sea',cat:'power',hint:'One of the most contested bodies of water on earth. Why does it matter?'},
+  {id:84,text:'Why ASEAN avoids confrontation',cat:'power',hint:'The art of the carefully worded non-statement. Strategic neutrality as doctrine.'},
+  {id:85,text:'Soft power',cat:'power',hint:'K-pop, the BBC, Hollywood. How culture becomes geopolitics.'},
+  {id:86,text:'Why people stay broke despite earning more',cat:'money',hint:'Lifestyle inflation. Status spending. The hedonic treadmill.'},
+  {id:87,text:'Why rich people use debt differently',cat:'money',hint:'Debt is a tool. The wealthy borrow to invest. The poor borrow to consume.'},
+  {id:88,text:'How inflation silently reduces wealth',cat:'money',hint:'Your savings are shrinking even when the number doesn\'t change.'},
+  {id:89,text:'Why wages stagnate',cat:'money',hint:'Productivity keeps rising. Pay doesn\'t. Who is capturing the difference?'},
+  {id:90,text:'How sovereign wealth funds work',cat:'money',hint:'Norway\'s oil fund. Singapore\'s GIC. Why some countries save and others don\'t.'},
+  {id:91,text:'The economics of subsidies',cat:'money',hint:'They help and they hurt. It depends entirely on who you ask.'},
+  {id:92,text:'Tax avoidance vs tax evasion',cat:'money',hint:'One is legal. One is not. The line between them is drawn by lawyers.'},
+  {id:93,text:'Why GDP can rise while people feel poorer',cat:'money',hint:'The number goes up. Your life doesn\'t. Here\'s why.'},
+  {id:94,text:'The hidden curriculum of corporate life',cat:'money',hint:'What they don\'t teach you: office politics, promotions, unspoken rules.'},
+  {id:95,text:'Why "follow your passion" can mislead',cat:'money',hint:'Cal Newport says passion follows mastery. Not the other way around.'},
+  {id:96,text:'Burnout and modern work culture',cat:'money',hint:'It\'s not laziness. It\'s a systemic failure of how we structure work.'},
+  {id:97,text:'The rise of gig work',cat:'money',hint:'Flexibility vs security. Who really benefits from the gig economy?'},
+  {id:98,text:'Why middle-class families feel squeezed',cat:'money',hint:'Costs rise faster than income. The gap between expectation and reality widens.'},
+  {id:99,text:'Universal basic income',cat:'money',hint:'Give everyone money. What actually happens? The experiments are in.'},
+  {id:100,text:'Why financial literacy is taught too late',cat:'money',hint:'Compound interest starts at 22. Schools teach it at 35.'},
+  {id:101,text:'Why Rome fell',cat:'history',hint:'Not one reason. A hundred. Which ones are we living through now?'},
+  {id:102,text:'The Mongol Empire',cat:'history',hint:'The largest land empire in history. What did they actually build?'},
+  {id:103,text:'The Cold War',cat:'history',hint:'Two superpowers never fought directly. Millions died in the middle.'},
+  {id:104,text:'Decolonisation',cat:'history',hint:'Why did the British Empire leave? Was it principle, economics, or exhaustion?'},
+  {id:105,text:'The Opium Wars',cat:'history',hint:'Britain forced China to buy drugs at gunpoint. The humiliation still shapes foreign policy today.'},
+  {id:106,text:'Why Singapore separated from Malaysia',cat:'history',hint:'It was a divorce. Not a clean one. And both sides still tell it differently.'},
+  {id:107,text:'British Malaya',cat:'history',hint:'Tin, rubber, divide and rule. How colonial economics shaped modern Malaysia.'},
+  {id:108,text:'The Melaka Sultanate',cat:'history',hint:'The most important port in 15th-century Asia. How did it shape the region?'},
+  {id:109,text:'Japanese occupation of Southeast Asia',cat:'history',hint:'Three years that changed everything. Independence movements. Collaboration. Memory.'},
+  {id:110,text:'The rise of China',cat:'history',hint:'From the Century of Humiliation to the world\'s second-largest economy. How?'},
+  {id:111,text:'The Industrial Revolution',cat:'history',hint:'The most transformative event in human history. Who benefited? Who paid?'},
+  {id:112,text:'The French Revolution',cat:'history',hint:'Liberty, equality, fraternity — and then the guillotine. What went wrong?'},
+  {id:113,text:'The Non-Aligned Movement',cat:'history',hint:'Nehru, Tito, Nasser. The countries that refused to choose sides in the Cold War.'},
+  {id:114,text:'Communist insurgencies in Southeast Asia',cat:'history',hint:'Malaya\'s Emergency. The Viet Cong. What drove people to armed revolution?'},
+  {id:115,text:'Srivijaya and Majapahit',cat:'history',hint:'The maritime empires that dominated Southeast Asia before colonialism.'},
+  {id:116,text:'What is free will?',cat:'philosophy',hint:'If your brain decides before you do, who is making the choice?'},
+  {id:117,text:'What makes a good life?',cat:'philosophy',hint:'Happiness? Meaning? Virtue? The oldest question with no clear answer.'},
+  {id:118,text:'Moral relativism vs moral realism',cat:'philosophy',hint:'Is ethics a discovery or an invention?'},
+  {id:119,text:'Existentialism',cat:'philosophy',hint:'There is no inherent meaning. That\'s either terrifying or liberating.'},
+  {id:120,text:'Stoicism for modern life',cat:'philosophy',hint:'What can Marcus Aurelius teach us about surviving group chats?'},
+  {id:121,text:'What is consciousness?',cat:'philosophy',hint:'The hardest problem in science. We can\'t even define it properly.'},
+  {id:122,text:'Absurdism',cat:'philosophy',hint:'Life is meaningless AND you should still live it fully. Camus explains.'},
+  {id:123,text:'Confucianism in modern Asia',cat:'philosophy',hint:'Hierarchy, relationships, duty. How ancient philosophy still runs corporations and families.'},
+  {id:124,text:'Utilitarianism and its problems',cat:'philosophy',hint:'The greatest good for the greatest number. But who counts? And who decides?'},
+  {id:125,text:'Can suffering have meaning?',cat:'philosophy',hint:'Frankl survived Auschwitz by finding purpose. What does that teach us?'},
+  {id:126,text:'How to make better decisions',cat:'philosophy',hint:'First principles thinking. Pre-mortems. Inversion. The tools of clearer thinking.'},
+  {id:127,text:'How to think about death',cat:'philosophy',hint:'Epicurus, the Stoics, and modern philosophy on the only certainty.'},
+  {id:128,text:'Why truth matters',cat:'philosophy',hint:'Post-truth politics. Deepfakes. AI-generated reality. What happens when truth is optional?'},
+  {id:129,text:'Taoism and wu wei',cat:'philosophy',hint:'The philosophy of doing nothing — and why that\'s one of the hardest things to do.'},
+  {id:130,text:'Buddhist philosophy',cat:'philosophy',hint:'Impermanence, suffering, and the self that doesn\'t exist. Practical or escapist?'},
+  {id:131,text:'Why some cities feel alive and others feel dead',cat:'society',hint:'Walkability. Mixed use. History. Density. It\'s not random.'},
+  {id:132,text:'Why housing becomes unaffordable',cat:'society',hint:'It\'s never just supply and demand. It\'s always politics and power.'},
+  {id:133,text:'Why urbanization keeps happening',cat:'society',hint:'People move to cities even when cities are expensive and stressful.'},
+  {id:134,text:'Gender pay gap debates',cat:'society',hint:'Is it real? Caused by what? Nobody agrees on the data interpretation.'},
+  {id:135,text:'Fertility decline',cat:'society',hint:'South Korea. Japan. Italy. Young people are choosing not to have children. Why?'},
+  {id:136,text:'Social mobility myths',cat:'society',hint:'We believe hard work determines success. The data says otherwise.'},
+  {id:137,text:'Masculinity crisis debates',cat:'society',hint:'Male loneliness. Declining outcomes. Andrew Tate. What\'s actually happening?'},
+  {id:138,text:'The motherhood penalty',cat:'society',hint:'Having a child reduces a woman\'s earnings. Having a child increases a man\'s. Why?'},
+  {id:139,text:'Why young people delay marriage',cat:'society',hint:'Financial pressure, changing values, or something deeper?'},
+  {id:140,text:'Intergenerational trauma',cat:'society',hint:'Trauma changes how genes express. Your parents\' history lives in your body.'},
+  {id:141,text:'Why religion persists',cat:'religion',hint:'Secularism has been "winning" for 200 years. Yet religion grows globally.'},
+  {id:142,text:'Megachurch culture',cat:'religion',hint:'When church becomes a brand. Worship as performance. Community as product.'},
+  {id:143,text:'The prosperity gospel',cat:'religion',hint:'God wants you to be rich. Where did this idea come from? Who does it serve?'},
+  {id:144,text:'Religious trauma',cat:'religion',hint:'How belief systems can harm. And what healing actually looks like.'},
+  {id:145,text:'Mysticism across religions',cat:'religion',hint:'The Sufi, the Kabbalist, the Zen monk. Different paths, same strange destination.'},
+  {id:146,text:'Why people leave religion',cat:'religion',hint:'It\'s rarely just one moment. It\'s a slow erosion — or a sudden rupture.'},
+  {id:147,text:'Why people convert',cat:'religion',hint:'Conversion is emotional before it\'s intellectual. What triggers it?'},
+  {id:148,text:'Spiritual abuse',cat:'religion',hint:'Power, control, and manipulation inside religious communities.'},
+  {id:149,text:'Celebrity pastors',cat:'religion',hint:'When faith meets fame, branding, and platform. What goes wrong?'},
+  {id:150,text:'Religion and nationalism',cat:'religion',hint:'Hindutva. Christian nationalism. Political Islam. Where does faith end and power begin?'},
+  {id:151,text:'Why social media rewards outrage',cat:'media',hint:'The algorithm optimises for engagement. Outrage is the highest engagement. Same thing.'},
+  {id:152,text:'Algorithmic radicalisation',cat:'media',hint:'You didn\'t find that rabbit hole. It found you. Step by step.'},
+  {id:153,text:'Influencer culture',cat:'media',hint:'Parasocial relationships. Fake authenticity. Sponsored vulnerability.'},
+  {id:154,text:'Why misinformation spreads',cat:'media',hint:'False news spreads 6x faster than true news. The study was peer-reviewed.'},
+  {id:155,text:'How bots and troll farms operate',cat:'media',hint:'Internet Research Agency. 50 Cent Army. State-sponsored narrative warfare.'},
+  {id:156,text:'How newsrooms decide what\'s news',cat:'media',hint:'Agenda-setting theory. Framing effects. Why some stories never get told.'},
+  {id:157,text:'Propaganda models',cat:'media',hint:'Herman and Chomsky\'s Manufacturing Consent. Still relevant 40 years later.'},
+  {id:158,text:'Media ownership and bias',cat:'media',hint:'Who owns the newspaper shapes what the newspaper believes.'},
+  {id:159,text:'How luxury branding creates desire',cat:'media',hint:'Scarcity. Heritage. Status. How brands make you feel poor for not owning them.'},
+  {id:160,text:'How supermarkets manipulate choices',cat:'media',hint:'Eye level. Aisle placement. Loss leaders. Every centimetre is a decision.'},
+  {id:161,text:'Why highways reshape cities',cat:'cities',hint:'The urban freeway destroyed more Black communities than any policy.'},
+  {id:162,text:'Why malls replaced town squares',cat:'cities',hint:'Private space masquerading as public space. And we gave it up willingly.'},
+  {id:163,text:'Transit-oriented development',cat:'cities',hint:'Cities designed around trains, not cars. The data says they\'re better in every way.'},
+  {id:164,text:'Why some neighbourhoods gentrify',cat:'cities',hint:'Art, coffee, and rising rents. Who wins and who gets pushed out?'},
+  {id:165,text:'Urban heat islands',cat:'cities',hint:'Cities are hotter than the countryside. The reasons — and solutions — are fascinating.'},
+  {id:166,text:'Why some townships fail',cat:'cities',hint:'Ghost malls. Empty condos. What goes wrong in property development?'},
+  {id:167,text:'Freehold vs leasehold psychology',cat:'cities',hint:'Why Malaysians obsess over freehold. And whether the obsession is rational.'},
+  {id:168,text:'Why location beats design in property',cat:'cities',hint:'The ugliest house in the best street beats the best house in the wrong area.'},
+  {id:169,text:'Singapore\'s HDB model',cat:'cities',hint:'80% of Singaporeans live in public housing. And they love it. How?'},
+  {id:170,text:'Why young people can\'t buy homes',cat:'cities',hint:'Stagnant wages. Speculative demand. Restrictive zoning. All three. Everywhere.'},
+  {id:171,text:'Why people commit crimes',cat:'law',hint:'Opportunity. Inequality. Rational choice. The theories all have evidence.'},
+  {id:172,text:'White-collar crime',cat:'law',hint:'It costs society more than street crime. Gets prosecuted far less. Why?'},
+  {id:173,text:'Money laundering',cat:'law',hint:'How dirty money becomes clean. Real estate. Shell companies. Lawyers.'},
+  {id:174,text:'False confessions',cat:'law',hint:'Innocent people confess to crimes they didn\'t commit. More often than you think.'},
+  {id:175,text:'Wrongful convictions',cat:'law',hint:'The Innocence Project has exonerated 375 people. Mostly via DNA. Who let them rot?'},
+  {id:176,text:'Drug policy debates',cat:'law',hint:'Portugal decriminalised everything. Drug deaths fell. Why don\'t others copy it?'},
+  {id:177,text:'Rehabilitation vs punishment',cat:'law',hint:'Norway rehabilitates. The US punishes. The recidivism data is damning.'},
+  {id:178,text:'Defamation law',cat:'law',hint:'The truth is a defence. But only if you can afford to prove it in court.'},
+  {id:179,text:'Whistleblower protection',cat:'law',hint:'Snowden. Assange. Manning. The law says it protects them. Reality disagrees.'},
+  {id:180,text:'Judicial independence',cat:'law',hint:'When judges fear governments, justice becomes political. How does it happen?'},
+  {id:181,text:'Why healthcare costs keep rising',cat:'health',hint:'Insurance, pharmaceuticals, hospital systems. Everybody has an incentive to charge more.'},
+  {id:182,text:'Why sleep affects everything',cat:'health',hint:'Memory consolidation. Immune function. Weight. Mental health. Sleep is the master switch.'},
+  {id:183,text:'Burnout as a medical condition',cat:'health',hint:'The WHO classified it. What exactly happens to a burned-out brain?'},
+  {id:184,text:'The gut-brain connection',cat:'health',hint:'90% of serotonin is made in your gut. Your microbiome runs your mood.'},
+  {id:185,text:'Placebo and nocebo effects',cat:'health',hint:'Belief can heal or kill. The nocebo effect is real and underappreciated.'},
+  {id:186,text:'Psychedelic therapy',cat:'health',hint:'Psilocybin is FDA breakthrough therapy for depression. What does it actually do?'},
+  {id:187,text:'Why people fall for wellness scams',cat:'health',hint:'Goop. Detox teas. Supplements. The psychology behind health pseudoscience.'},
+  {id:188,text:'Mental health labelling',cat:'health',hint:'ADHD. Anxiety. Autism. Are we overdiagnosing, or finally paying attention?'},
+  {id:189,text:'Precision medicine',cat:'health',hint:'Your genome, your microbiome, your biomarkers. Medicine finally designed for you.'},
+  {id:190,text:'Why hospitals become overcrowded',cat:'health',hint:'It\'s never just demand. Bed management, discharge delays, primary care gaps.'},
+  {id:191,text:'Why some school systems outperform others',cat:'education',hint:'Finland. Singapore. South Korea. The approaches are completely different.'},
+  {id:192,text:'Tuition culture',cat:'education',hint:'Why parents spend thousands on tutors when school exists. What does it reveal?'},
+  {id:193,text:'Credential inflation',cat:'education',hint:'Degrees are worth less than they were. Masters are the new bachelors. Why?'},
+  {id:194,text:'How education reproduces class',cat:'education',hint:'Elite schools → elite networks → elite jobs. The cycle is very hard to break.'},
+  {id:195,text:'Why teachers burn out',cat:'education',hint:'Workload, behaviour, bureaucracy. The best teachers leave first.'},
+  {id:196,text:'Critical thinking is rare',cat:'education',hint:'We teach content. We don\'t teach how to evaluate it. This is expensive.'},
+  {id:197,text:'Systems thinking',cat:'education',hint:'Why smart people create bad outcomes when they optimise local parts of complex wholes.'},
+  {id:198,text:'How experts think differently from beginners',cat:'education',hint:'Chunking. Pattern recognition. The science behind expertise.'},
+  {id:199,text:'Why smart people can be wrong',cat:'education',hint:'Intelligence protects beliefs. Bright people rationalise harder, not better.'},
+  {id:200,text:'Memory techniques',cat:'education',hint:'Method of loci. Spaced repetition. The science of retention is old and ignored.'},
+  {id:201,text:'Old money vs new money',cat:'class',hint:'Old money doesn\'t talk about money. New money does. The signals are everywhere.'},
+  {id:202,text:'Class markers people don\'t notice',cat:'class',hint:'Teeth. Shoes. Books on shelves. Pronunciation. Class is always leaking.'},
+  {id:203,text:'Taste as class signalling',cat:'class',hint:'What you eat, wear, and read signals your class more accurately than your salary.'},
+  {id:204,text:'The hidden rules of elite circles',cat:'class',hint:'Understatement. Ease. Knowing which fork. Belonging is performed, not declared.'},
+  {id:205,text:'Why poor people are blamed for poverty',cat:'class',hint:'The just-world fallacy. If they\'re poor, they must deserve it. Right?'},
+  {id:206,text:'Quiet luxury',cat:'class',hint:'No logos. Neutral tones. Expensive basics. Why the ultra-wealthy went invisible.'},
+  {id:207,text:'How education reproduces class',cat:'class',hint:'Elite schools → elite networks → elite jobs. Generation after generation.'},
+  {id:208,text:'Why middle-class people fear falling',cat:'class',hint:'Status anxiety. One job loss away. The terror of downward mobility.'},
+  {id:209,text:'Social shame and family reputation',cat:'class',hint:'In Asian families, shame is a community project. How does it shape decisions?'},
+  {id:210,text:'Buying titles and status symbols',cat:'class',hint:'Dato. Lord. Dr. Why do people pay for honorifics? What does the purchase signal?'},
+  {id:211,text:'Why social media rewards female beauty',cat:'gender',hint:'Visual platforms. Follower metrics. The attention economy has a gender problem.'},
+  {id:212,text:'Male loneliness epidemic',cat:'gender',hint:'Men are reporting more loneliness than ever. The data is consistent. What\'s happening?'},
+  {id:213,text:'Asian parenting psychology',cat:'gender',hint:'High expectations. Comparative pressure. Conditional love. What does it produce?'},
+  {id:214,text:'Filial piety in modern life',cat:'gender',hint:'Your parents sacrificed. You owe them. But how much? And what if they were harmful?'},
+  {id:215,text:'Why some families avoid therapy',cat:'gender',hint:'Stigma. Cost. Cultural norms. And the fear of what might come out.'},
+  {id:216,text:'Emotional labour in relationships',cat:'gender',hint:'Carrying the family\'s emotions is unpaid work. Who usually does it?'},
+  {id:217,text:'Dating app inequality',cat:'gender',hint:'The top 1% of men get 50% of matches. The data from Hinge and Tinder is brutal.'},
+  {id:218,text:'Hypergamy debates',cat:'gender',hint:'Women marry up. Men marry equally. Is it biology, economics, or culture?'},
+  {id:219,text:'Childfree movement',cat:'gender',hint:'Deliberate non-parenthood. Growing. Stigmatised. But is it selfish or rational?'},
+  {id:220,text:'Intergenerational trauma in families',cat:'gender',hint:'War. Poverty. Abuse. How does trauma pass between generations biologically?'},
+  {id:221,text:'Why Malaysia has so many government apps',cat:'mysg',hint:'MySejahtera was one of many. What does fragmented digital governance reveal?'},
+  {id:222,text:'Bumiputera policy and the NEP',cat:'mysg',hint:'Affirmative action for the Malay majority. 50 years on — what worked and what didn\'t?'},
+  {id:223,text:'How Malaysia\'s GLCs shape the economy',cat:'mysg',hint:'EPF, Khazanah, PNB, Tabung Haji. Government-linked capitalism at scale.'},
+  {id:224,text:'Why Cyberjaya struggled as a tech city',cat:'mysg',hint:'The dream of a Silicon Valley in the jungle. What went wrong?'},
+  {id:225,text:'Race and class in Malaysian urban geography',cat:'mysg',hint:'Which township is which race, and why. The colonial legacy lives in postcodes.'},
+  {id:226,text:'Malaysia\'s middle-income trap',cat:'mysg',hint:'Richer than neighbours, poorer than aspirations. Why is Malaysia stuck?'},
+  {id:227,text:'Sabah and Sarawak autonomy',cat:'mysg',hint:'Malaysia Agreement 1963. What was promised? What was delivered?'},
+  {id:228,text:'Why Singapore\'s civil service is elite',cat:'mysg',hint:'Permanent secretaries. Meritocracy. Salary benchmarking. The design is deliberate.'},
+  {id:229,text:'Singapore\'s CPF and HDB system',cat:'mysg',hint:'Mandatory savings fund your home, retirement, and healthcare. Genius or coercive?'},
+  {id:230,text:'How Malaysia and Singapore handle religion differently',cat:'mysg',hint:'One has a state religion embedded in the constitution. One has managed secularism. Compare.'},
+  {id:231,text:'Why PJ and Subang remain desirable',cat:'mysg',hint:'Schools, infrastructure, history. What makes a township sticky?'},
+  {id:232,text:'Singapore\'s vulnerability mindset',cat:'mysg',hint:'No resources. No hinterland. No defence depth. How existential fear became national strategy.'},
+  {id:233,text:'Brain drain from Malaysia',cat:'mysg',hint:'A million Malaysians live abroad. Many don\'t come back. Why not?'},
+  {id:234,text:'PAP political dominance in Singapore',cat:'mysg',hint:'One party since 1959. Is it authoritarianism or competent governance that keeps them in?'},
+  {id:235,text:'Toll politics in Malaysia',cat:'mysg',hint:'Concession agreements. Government guarantees. Who really benefits from privatised highways?'},
+  {id:236,text:'Bioluminescence in nature',cat:'nature',hint:'Creatures that make their own light in the deepest dark.'},
+  {id:237,text:'Deep sea ecosystems',cat:'nature',hint:'Life without sunlight, heat, or oxygen. Extremophiles rewrite biology.'},
+  {id:238,text:'Biomimicry',cat:'nature',hint:'The internet uses the same structure as slime mold. Nature already solved it.'},
+  {id:239,text:'Climate psychology',cat:'nature',hint:'Why don\'t humans respond rationally to existential threats?'},
+  {id:240,text:'The biology of aging',cat:'nature',hint:'Why do we age? Can we stop it? Should we? The longevity science is accelerating.'},
+  {id:241,text:'Synesthesia',cat:'nature',hint:'Some people taste colours or see music as shapes. Feature or bug?'},
+  {id:242,text:'The microbiome',cat:'nature',hint:'You are 50% bacteria by cell count. That bacteria runs your mood, immunity, and weight.'},
+  {id:243,text:'Placebo and nocebo effects',cat:'nature',hint:'Belief can heal or harm. The nocebo effect kills people and medicine ignores it.'},
+  {id:244,text:'Sleep science',cat:'nature',hint:'Why we sleep, what happens during it, and what sleep deprivation does to decision-making.'},
+  {id:245,text:'Psychedelic therapy research',cat:'nature',hint:'MDMA for PTSD. Psilocybin for depression. Ketamine for suicidal ideation. The evidence is in.'},
+  {id:246,text:'Why airport carpets look the way they do',cat:'smalldeep',hint:'Wayfinding psychology. Sound dampening. Anxiety reduction. Nothing is accidental.'},
+  {id:247,text:'Why hotel lobbies smell expensive',cat:'smalldeep',hint:'Scent marketing is a $200M industry. Westin\'s White Tea scent is trademarked.'},
+  {id:248,text:'Why malls are designed to make you wander',cat:'smalldeep',hint:'No clocks. No windows. Confusing layouts. The Gruen transfer is real.'},
+  {id:249,text:'Why rich neighbourhoods have more trees',cat:'smalldeep',hint:'Urban canopy coverage correlates precisely with household income. Every city.'},
+  {id:250,text:'Why school uniforms exist',cat:'smalldeep',hint:'Class erasure. Control. Identity formation. The arguments for and against are both strong.'},
+  {id:251,text:'Why people queue differently by country',cat:'smalldeep',hint:'British queuing. Japanese precision. Malaysian chaos. What does it reveal about society?'},
+  {id:252,text:'Why cafés became workspaces',cat:'smalldeep',hint:'Third place theory. The death of the office. The economics of renting a table.'},
+  {id:253,text:'Why public toilets reveal state capacity',cat:'smalldeep',hint:'The quality of a country\'s toilets tracks its governance more than its GDP.'},
+  {id:254,text:'Why childhood snacks become identity markers',cat:'smalldeep',hint:'Mamee. Milo. Sugus. Brands colonise nostalgia before we understand what nostalgia is.'},
+  {id:255,text:'Why accents affect perceived intelligence',cat:'smalldeep',hint:'The same words. The same content. Different accent. Different credibility. Every time.'},
+  {id:256,text:'Why "minimalist" design became associated with wealth',cat:'smalldeep',hint:'Quiet luxury. Empty space. Restraint. How did having less become a status symbol?'},
+  {id:257,text:'Why handwritten menus feel premium',cat:'smalldeep',hint:'Perceived craft. Scarcity signals. The economics of friction.'},
+  {id:258,text:'Why hawker culture is hard to preserve',cat:'smalldeep',hint:'Succession. Rent. Hygiene regulations. UNESCO listing. It\'s more complicated than nostalgia.'},
+  {id:259,text:'Why weddings are so expensive',cat:'smalldeep',hint:'Status performance. Vendor cartels. Social pressure. The wedding industry is a case study.'},
+  {id:260,text:'Why parking shapes cities',cat:'smalldeep',hint:'Minimum parking requirements have destroyed more walkable urbanism than any policy.'},
+];
+
+const QUESTIONS = {
+  explore: [
+    "What topic have you fallen deepest into a rabbit hole on?",
+    "If you could instantly know the answer to one unsolved mystery, what would it be?",
+    "What belief have you changed your mind about in the last year?",
+    "What subject do you wish you'd studied more seriously?",
+    "What's something you know a weird amount about?",
+    "What topic do you think is criminally underrated?",
+    "If you wrote a book, what would it be about?",
+    "What's the most interesting thing you learned recently?",
+    "What question keeps you up at night?",
+    "What would you research if you had a year off?",
+    "What's a subject that sounds boring but is actually fascinating once you get in?",
+    "What's the most counterintuitive thing you believe?",
+    "What's something that seemed simple until you looked closer?",
+    "What's a question nobody has ever asked you that you'd love to answer?",
+    "What idea do you find yourself returning to again and again?",
+  ],
+  date: [
+    "What idea genuinely changed how you see the world?",
+    "What's something you believe that most people around you don't share?",
+    "What topic makes you lose track of time completely?",
+    "What's something that scares you philosophically?",
+    "If you could go deep into one rabbit hole forever, what would it be?",
+    "What's a question you've never been asked but always wanted to answer?",
+    "If you could have dinner with any thinker, alive or dead, who and why?",
+    "What's your hottest intellectual take?",
+    "What's the most beautiful idea you've ever encountered?",
+    "Do you think consciousness survives death? Why or why not?",
+    "What's a belief you hold that you can't fully prove?",
+    "What would you change about how society is organised?",
+    "What's the most interesting thing about you that wouldn't come up in small talk?",
+    "What do you think most people around you fundamentally misunderstand?",
+    "Is there a version of you from five years ago you'd disagree with sharply?",
+  ],
+  friends: [
+    "What's the most confident wrong opinion you've ever held?",
+    "What conspiracy theory do you find weirdly compelling, even if you don't believe it?",
+    "What social norm do you think is genuinely absurd?",
+    "What topic could you debate for hours?",
+    "What's the most overrated idea people take seriously?",
+    "What's your most controversial opinion about education?",
+    "What do you think society will look back on with embarrassment in 50 years?",
+    "What's something everyone seems to agree on that you think is wrong?",
+    "If you ran the world for a day, what's the first thing you'd change?",
+    "What's a problem you think is much worse than people realise?",
+    "What would you do if you knew you wouldn't fail?",
+    "What's the most overrated thing people pursue?",
+    "What do you think you'll regret not doing?",
+    "What's your honest take on social media? Is it net positive or negative?",
+    "What's something you've stopped believing in that you once held tightly?",
+  ],
+  pitch: [
+    "Explain dark matter to me like I'm 10 years old. Go.",
+    "What's your 60-second take on why religion persists in the modern world?",
+    "Pitch me the most important idea from behavioural economics.",
+    "Summarise the simulation hypothesis in under a minute.",
+    "What's your fastest explanation for why democracies backslide?",
+    "Give me your hottest take on AI consciousness in 30 seconds.",
+    "Explain the circular economy like you're pitching it to an investor.",
+    "What's the core idea of transhumanism, and is it good or bad?",
+    "How would you explain the Fermi paradox at a dinner party?",
+    "Pitch me on why studying philosophy is still relevant.",
+    "Why should anyone care about the South China Sea? 60 seconds.",
+    "What is surveillance capitalism, and why does it matter? Go.",
+    "Explain why the gut-brain connection matters, like I've never heard of it.",
+    "What's Malaysia's biggest structural problem? You have 90 seconds.",
+    "Why is Singapore's civil service unusually competent? Convince me quickly.",
+  ],
+  power: [
+    "Why do some governments work and others fail catastrophically?",
+    "How does corruption become normalised in an institution or country?",
+    "Why do voters sometimes vote against their own economic interests?",
+    "What's the difference between a competent bureaucracy and a patronage network?",
+    "Why do democracies backslide — and what stops them?",
+    "Is there such a thing as a 'deep state', or is that always a conspiracy theory?",
+    "How does gerrymandering work — and how does it shape elections before they happen?",
+    "Why do some small countries outperform large ones?",
+    "What's the most dangerous political ideology operating right now, and why?",
+    "How does propaganda work in a media-literate population?",
+    "What's the difference between a soft power strategy and a hard power strategy?",
+    "Why is the South China Sea a geopolitical flashpoint?",
+    "What would change if ASEAN actually had teeth?",
+    "Why do some countries become rich and others stay poor — and is it ever reversible?",
+    "What does the US-China rivalry look like from a small state like Malaysia or Singapore?",
+  ],
+  money: [
+    "Why do people stay broke even when their income increases?",
+    "What's the single most important financial concept nobody teaches in school?",
+    "How do wealthy people use debt differently from everyone else?",
+    "Why does wages stagnation happen even when productivity rises?",
+    "What's the real purpose of a sovereign wealth fund?",
+    "How do subsidies help — and how do they trap economies?",
+    "What's the most misunderstood thing about inflation?",
+    "Why does GDP rise while ordinary people feel poorer?",
+    "What's the hidden curriculum of corporate life that nobody tells you?",
+    "Is 'follow your passion' good career advice or a privilege trap?",
+    "What does burnout actually look like, and why is modern work culture producing it?",
+    "What's the most underrated financial mistake middle-class families make?",
+    "What would genuinely help solve housing affordability — not just politically but practically?",
+    "Is universal basic income a serious policy or wishful thinking?",
+    "What's the most honest take on the gig economy — liberation or exploitation?",
+  ],
+  psychology: [
+    "What's the cognitive bias you catch yourself falling for most?",
+    "Why do smart, educated people join cults?",
+    "How does shame differ from guilt — and why does the difference matter so much?",
+    "Why do people stay in relationships or jobs they know are bad for them?",
+    "What's the most underrated thing that shapes human behaviour?",
+    "Why do people ghost instead of having an honest conversation?",
+    "How does attachment style formed in childhood affect adult relationships?",
+    "What's the psychology behind why gossip exists — is it always destructive?",
+    "How do charismatic leaders gain loyalty from otherwise rational people?",
+    "Why does nostalgia feel so powerful — and who profits from it?",
+    "What's the real psychological driver behind why people buy luxury goods?",
+    "Why do people lie — and when does it become self-destructive?",
+    "What does learned helplessness look like in everyday life?",
+    "Why is belonging such a primal human need — what happens when it's absent?",
+    "What's the most interesting thing you know about how memory actually works?",
+  ],
+  history: [
+    "What historical event do you think is most misunderstood by the public?",
+    "Why did the Roman Empire fall — and which of those causes are repeating today?",
+    "What did colonialism actually do to the countries it touched — economically and psychologically?",
+    "Why did Singapore separate from Malaysia — and who tells the story differently?",
+    "What does the Bronze Age collapse tell us about civilisational fragility?",
+    "What's the most important thing to understand about British Malaya?",
+    "Why did Japan's occupation of Southeast Asia accelerate independence movements?",
+    "What made the Cold War such an unusual conflict — and what was its real death toll?",
+    "Why is the Mongol Empire more complicated than its reputation for destruction?",
+    "What does the history of the Melaka Sultanate tell us about globalisation before Columbus?",
+    "Why did decolonisation happen so fast after World War II?",
+    "What's the most consequential history that gets almost no attention in schools?",
+    "How have colonial borders created ongoing conflicts in postcolonial states?",
+    "What would Southeast Asian history look like if Europe had never arrived?",
+    "What pattern in history are you most worried about repeating?",
+  ],
+  religion: [
+    "Why does religion keep growing globally despite two centuries of secularism?",
+    "What's the appeal of megachurches — what need do they actually fulfil?",
+    "Why does the prosperity gospel attract so many followers, including educated ones?",
+    "What's the difference between faith, superstition, and ideology?",
+    "How does religious trauma happen — and what does recovery look like?",
+    "Why do people leave religion — and what do they usually say drives the final decision?",
+    "What do all mystical traditions across religions seem to converge on?",
+    "When does a charismatic religious leader become dangerous?",
+    "How do religion and nationalism reinforce each other — and where does that lead?",
+    "What's the psychology of prayer — does it work, and if so, how?",
+    "Why do some religious communities produce extraordinary solidarity and others produce control?",
+    "What's the most interesting difference between how Malaysia and Singapore handle religion?",
+    "Can suffering have religious meaning — and does that help or harm people in crisis?",
+    "What do you think people are actually seeking when they seek spirituality?",
+    "Is it possible to have the community benefits of religion without the belief structure?",
+  ],
+  media: [
+    "Why does outrage spread faster than nuance on every platform?",
+    "What's the mechanism behind algorithmic radicalisation — step by step?",
+    "Is influencer culture making us more or less honest about how we actually live?",
+    "Why does misinformation spread 6x faster than true news?",
+    "How do state-sponsored troll farms actually operate?",
+    "What does agenda-setting theory say about why some stories are never told?",
+    "Is media ownership bias a bigger problem than journalist bias?",
+    "What's the most sophisticated propaganda technique operating right now?",
+    "How do supermarkets, casinos, and apps all use the same psychological toolkit?",
+    "What's the real business model behind 'free' digital products?",
+    "Is it possible to be genuinely media literate in the current environment?",
+    "What's the difference between a parasocial relationship and a community?",
+    "How does luxury branding create desire for things people didn't previously want?",
+    "What would change if newsrooms were owned by their readers instead of corporations?",
+    "Is cancel culture a moral correction mechanism or a mob with better PR?",
+  ],
+  mysg: [
+    "Why does Malaysia have so many government apps that don't talk to each other?",
+    "What did the New Economic Policy actually achieve — and what did it fail to do?",
+    "Why did Cyberjaya never become the Silicon Valley it was supposed to be?",
+    "How do Malaysia's GLCs shape the economy in ways that are hard to see?",
+    "What does the colonial map of race and township tell us about modern KL?",
+    "Why is Malaysia stuck in the middle-income trap — and what would actually break it?",
+    "What was the 1963 Malaysia Agreement, and what does Sabah and Sarawak think of it now?",
+    "Why is Singapore's civil service so unusually competent?",
+    "Does Singapore's CPF and HDB system represent brilliant design or coercive control?",
+    "Why is PAP political dominance stable — and what would change it?",
+    "What do Malaysia and Singapore do completely differently — and who gets it right?",
+    "Why are PJ and Subang consistently desirable townships, and what makes that stickiness?",
+    "Why does brain drain keep happening from Malaysia — and what would reverse it?",
+    "How does Singapore's vulnerability mindset shape every policy it makes?",
+    "What's the most honest take on toll privatisation in Malaysia?",
+  ],
+  smalltalk: [
+    "What's the most interesting thing you read or watched recently?",
+    "What topic have you been thinking about a lot lately?",
+    "What's something you know a weird amount about?",
+    "What question are you currently obsessed with?",
+    "What subject do you think is criminally underrated?",
+    "What's the last thing that genuinely surprised you?",
+    "What's a small thing that reveals something big?",
+    "What's the most interesting conversation you've had in the past month?",
+    "What are you currently trying to understand better?",
+    "What's something you changed your mind about recently?",
+  ],
+  random: ALL_TOPICS.map(t => `What do you actually know about: "${t.text}"?`),
+};
+
+const USE_CASE_QUESTIONS = {
+  date: {
+    title: '💫 Perfect for a first date',
+    questions: [
+      'What idea genuinely changed how you see the world?',
+      'What\'s a belief you hold that most people around you don\'t share?',
+      'What topic makes you lose track of time completely?',
+      'What\'s something that scares you philosophically?',
+      'Is there a version of you from five years ago you\'d disagree with sharply?',
+    ]
+  },
+  friends: {
+    title: '🫂 For your inner circle',
+    questions: [
+      'What social norm do you think is genuinely absurd?',
+      'What\'s something everyone agrees on that you think is wrong?',
+      'What do you think society will look back on with embarrassment?',
+      'What\'s the most overrated thing people spend their lives chasing?',
+      'What\'s something you\'ve stopped believing in that you once held tightly?',
+    ]
+  },
+  elevator: {
+    title: '🏢 Elevator pitch — 60 seconds',
+    questions: [
+      'Explain surveillance capitalism in 60 seconds. Go.',
+      'Pitch me on why consciousness is the hardest problem in science.',
+      'What\'s the most important idea in geopolitics right now?',
+      'Why does misinformation spread — convince me it\'s a design problem, not a people problem.',
+      'What\'s your 30-second take on why the middle class feels squeezed?',
+    ]
+  },
+  smalltalk: {
+    title: '☕ Small talk, but better',
+    questions: [
+      'What\'s the most interesting thing you read or watched recently?',
+      'What topic have you been thinking about a lot lately?',
+      'What\'s something you know a weird amount about?',
+      'What\'s the last thing that genuinely surprised you?',
+      'What are you currently trying to understand better?',
+    ]
+  },
+  solo: {
+    title: '🌙 For bored 2am brains',
+    questions: [
+      'What would you research if you had a whole year off?',
+      'What pattern in history worries you the most right now?',
+      'What belief have you quietly abandoned this year?',
+      'What topic do you feel like you fundamentally don\'t understand yet?',
+      'What question do you wish someone would ask you?',
+    ]
+  },
+  deep: {
+    title: '🌊 For genuine deep dives',
+    questions: [
+      'What are the historical, economic, and psychological causes of the middle-income trap?',
+      'What does neuroscience actually say about free will — and does it change anything morally?',
+      'How did colonial administrative structures shape postcolonial governance failures?',
+      'What would you need to believe to think surveillance capitalism is net positive?',
+      'If consciousness isn\'t biological, what are the implications for AI rights?',
+    ]
+  }
+};
+
+const QUOTES = [
+  { text: "The more I learn, the more I realise how much I don't know.", source: "Albert Einstein" },
+  { text: "Curiosity is the wick in the candle of learning.", source: "William Arthur Ward" },
+  { text: "An investment in knowledge pays the best interest.", source: "Benjamin Franklin" },
+  { text: "The only true wisdom is in knowing you know nothing.", source: "Socrates" },
+  { text: "Somewhere, something incredible is waiting to be known.", source: "Carl Sagan" },
+  { text: "The mind is not a vessel to be filled, but a fire to be kindled.", source: "Plutarch" },
+  { text: "The universe is under no obligation to make sense to you.", source: "Neil deGrasse Tyson" },
+  { text: "Reality is merely an illusion, albeit a very persistent one.", source: "Albert Einstein" },
+  { text: "The cosmos is within us. We are made of star-stuff.", source: "Carl Sagan" },
+  { text: "Stronger explanations combine history, incentives, institutions, psychology, and economics.", source: "Doc 3 — How to Research" },
+  { text: "The best topics help you understand how humans, money, power, belief, and society actually work.", source: "Doc 3 — Bottom Line" },
+  { text: "Don't ask 'Why is Malaysia like this?' Ask 'What incentive structure produces this outcome?'", source: "Doc 3 — Research Framework" },
+  { text: "Weak explanations say 'it's culture' or 'it's corruption.' Strong ones trace the mechanism.", source: "Doc 3 — Avoid Lazy Explanations" },
+  { text: "Every map is a political statement. Every data set has an author. Every story has a framing.", source: "Doc 3 — Media Literacy" },
+  { text: "Power is never given. It is maintained through institutions, incentives, and enforced norms.", source: "Doc 3 — Power & Politics" },
+  { text: "I am not what happened to me. I am what I choose to become.", source: "Carl Jung" },
+  { text: "Consciousness is a much smaller part of our mental life than we are conscious of.", source: "Timothy Wilson" },
+  { text: "Always ask: who benefits? Who loses? Who pays? Who decides? Who has no voice?", source: "Doc 3 — Look for Incentives" },
+  { text: "First define the question precisely. A vague question produces a vague answer.", source: "Doc 3 — Research Framework" },
+];
+
+const MARQUEE_ITEMS = [
+  'String Theory', 'Dark Matter', 'Fermi Paradox', 'Quantum Entanglement',
+  'Cult Psychology', 'Bioluminescence', 'The Voynich Manuscript', 'Mandela Effect',
+  'Transhumanism', 'Ancient Rome', 'Consciousness', 'Biomimicry', 'Deepfakes',
+  'Stoicism', 'Megachurches', 'Synthetic Biology', 'Geopolitics', 'Lucid Dreaming',
+  'Why Wages Stagnate', 'Algorithmic Radicalisation', 'Malay Sultanates', 'Gig Economy',
+  'Gaslighting', 'Propaganda Models', 'Class Markers', 'Urban Heat Islands',
+  'Wrongful Convictions', 'Gut-Brain Connection', 'Credential Inflation', 'Quiet Luxury',
+  'Malaysia NEP', 'Singapore HDB', 'Filial Piety', 'Hawker Culture', 'Brain Drain',
+];
+
+/* ============================
+   STATE
+   ============================ */
+let currentMode = 'explore';
+let currentDeck = 'explore';
+let currentQIndex = 0;
+let shuffledQuestions = [];
+let savedQuestions = JSON.parse(localStorage.getItem('bq_saved') || '[]');
+let currentTopicFilter = 'all';
+let rapidActive = false;
+let rapidTimer = null;
+let rapidTime = 30;
+let rapidScore = 0;
+let rapidPassed = 0;
+let rapidQIndex = 0;
+let shuffledTopics = [];
+let quoteIndex = 0;
+let shuffledRapid = [];
+
+/* ============================
+   INIT
+   ============================ */
+document.addEventListener('DOMContentLoaded', () => {
+  initCursor();
+  initTheme();
+  initQuote();
+  initMarquee();
+  initModesCarousel();
+  initDeckTabs();
+  initTopics();
+  initSaved();
+  shuffleAll();
+  animateCounters();
+  initRapidBlobs();
+  initParallax();
+});
+
+/* CURSOR */
+function initCursor() {
+  const c = document.getElementById('cursor');
+  const c2 = document.getElementById('cursor2');
+  document.addEventListener('mousemove', e => {
+    c.style.left = e.clientX + 'px';
+    c.style.top = e.clientY + 'px';
+    setTimeout(() => {
+      c2.style.left = e.clientX + 'px';
+      c2.style.top = e.clientY + 'px';
+    }, 80);
+  });
+  document.querySelectorAll('button,a,.mode-card,.topic-pill,.usecase-card,.deck-tab,.filter-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => c.classList.add('big'));
+    el.addEventListener('mouseleave', () => c.classList.remove('big'));
+  });
+}
+
+/* THEME */
+function initTheme() {
+  const saved = localStorage.getItem('bq_theme') || 'light';
+  document.documentElement.dataset.theme = saved;
+  updateThemeBtn();
+}
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const curr = document.documentElement.dataset.theme;
+  const next = curr === 'light' ? 'dark' : 'light';
+  document.documentElement.dataset.theme = next;
+  localStorage.setItem('bq_theme', next);
+  updateThemeBtn();
+});
+function updateThemeBtn() {
+  const btn = document.getElementById('themeToggle');
+  btn.textContent = document.documentElement.dataset.theme === 'light' ? '🌙' : '☀️';
+}
+
+/* QUOTE */
+function initQuote() {
+  const today = new Date();
+  quoteIndex = (today.getDate() + today.getMonth() * 31) % QUOTES.length;
+  renderQuote();
+}
+function renderQuote() {
+  const q = QUOTES[quoteIndex];
+  const textEl = document.getElementById('qodText');
+  const srcEl = document.getElementById('qodSource');
+  textEl.style.opacity = '0';
+  srcEl.style.opacity = '0';
+  setTimeout(() => {
+    textEl.textContent = q.text;
+    srcEl.textContent = '— ' + q.source;
+    textEl.style.opacity = '1';
+    srcEl.style.opacity = '1';
+  }, 300);
+}
+function cycleQuote() {
+  quoteIndex = (quoteIndex + 1) % QUOTES.length;
+  renderQuote();
+}
+
+/* MARQUEE */
+function initMarquee() {
+  const track = document.getElementById('marqueeTrack');
+  const track2 = document.getElementById('marqueeTrack2');
+  const items = [...MARQUEE_ITEMS, ...MARQUEE_ITEMS];
+  const html = items.map(item =>
+    `<span class="marquee-item">${item}<span class="marquee-sep">✦</span></span>`
+  ).join('');
+  track.innerHTML = html;
+  track2.innerHTML = html;
+}
+
+/* MODES CAROUSEL */
+const MODES_DATA = [
+  { icon:'🧭', name:'Explorer Mode',       desc:'Browse topics slowly. Great for solo sessions or getting lost on purpose.',       badge:'Deep Dive',  badgeCls:'badge-brain', deck:'explore' },
+  { icon:'💫', name:'Date Mode',           desc:'Curated questions that actually go somewhere interesting. Skip the small talk.',  badge:'Vibes Only', badgeCls:'badge-vibe',  deck:'date' },
+  { icon:'🎲', name:'Squad Mode',          desc:'Chaotic good questions for groups. Debates guaranteed. Friendship tested.',       badge:'Hot Takes',  badgeCls:'badge-fire',  deck:'friends' },
+  { icon:'⚡', name:'Rapid Fire',          desc:'30 seconds. One question. Answer or pass. Zero hesitation allowed.',             badge:'Speed Run',  badgeCls:'badge-fire',  deck:'rapid' },
+  { icon:'🎯', name:'Elevator Pitch',      desc:'Big ideas in 60 seconds. Pitch your take on complex topics to strangers.',       badge:'Big Brain',  badgeCls:'badge-deep',  deck:'pitch' },
+  { icon:'🏛️', name:'Power & Politics',    desc:'How governments work, fail, and stay in power. The real mechanics.',            badge:'Sharp',      badgeCls:'badge-fire',  deck:'power' },
+  { icon:'💰', name:'Money & Work',        desc:'Why wages stagnate, wealth concentrates, and the middle class feels squeezed.',  badge:'Practical',  badgeCls:'badge-brain', deck:'money' },
+  { icon:'🧠', name:'Psychology',          desc:'Biases, attachment styles, gaslighting, cults. Why people do what they do.',     badge:'Self-Aware', badgeCls:'badge-vibe',  deck:'psychology' },
+  { icon:'📜', name:'History',             desc:'History that explains today. Colonialism, empire collapse, Southeast Asia.',     badge:'Context',    badgeCls:'badge-deep',  deck:'history' },
+  { icon:'✨', name:'Religion & Belief',   desc:'Megachurches, prosperity gospel, mysticism, leaving faith. Real questions.',     badge:'Meaningful', badgeCls:'badge-vibe',  deck:'religion' },
+  { icon:'📱', name:'Media & Influence',   desc:'Algorithms, propaganda, influencers, misinformation. Who shapes what you think?',badge:'Critical',   badgeCls:'badge-fire',  deck:'media' },
+  { icon:'🌺', name:'Malaysia & Singapore',desc:'NEP, GLCs, HDB, brain drain, toll politics. Deep dives for local context.',      badge:'Local',      badgeCls:'badge-deep',  deck:'mysg' },
+  { icon:'🎰', name:'Chaos Mode',          desc:'Fully shuffled. Any of 260 topics. Any category. Pure intellectual randomness.', badge:'Wild Card',  badgeCls:'badge-vibe',  deck:'random' },
+];
+let modesPage = 0;
+const MODES_PER_PAGE = 1;
+
+function initModesCarousel() {
+  const track = document.getElementById('modesTrack');
+  const totalPages = Math.ceil(MODES_DATA.length / MODES_PER_PAGE);
+  track.innerHTML = Array.from({ length: totalPages }, (_, p) => {
+    const slice = MODES_DATA.slice(p * MODES_PER_PAGE, p * MODES_PER_PAGE + MODES_PER_PAGE);
+    const cards = slice.map(m => {
+      const onclick = m.deck === 'rapid'
+        ? `document.getElementById('rapid').scrollIntoView({behavior:'smooth'})`
+        : `setMode('${m.deck}');document.getElementById('game').scrollIntoView({behavior:'smooth'})`;
+      return `<div class="mode-card" onclick="${onclick}">
+        <span class="mode-icon">${m.icon}</span>
+        <div class="mode-name">${m.name}</div>
+        <p class="mode-desc">${m.desc}</p>
+        <span class="mode-badge ${m.badgeCls}">${m.badge}</span>
+      </div>`;
+    }).join('');
+    return `<div class="modes-car-page">${cards}</div>`;
+  }).join('');
+  modesPage = 0;
+  renderModesPage(false);
+}
+
+function renderModesPage(animate = true) {
+  const track = document.getElementById('modesTrack');
+  const totalPages = Math.ceil(MODES_DATA.length / MODES_PER_PAGE);
+  track.style.transition = animate ? 'transform 0.42s cubic-bezier(0.4,0,0.2,1)' : 'none';
+  track.style.transform = `translateX(-${modesPage * 100}%)`;
+  document.getElementById('modesPrev').disabled = modesPage === 0;
+  document.getElementById('modesNext').disabled = modesPage >= totalPages - 1;
+}
+
+function modesPrev() { if (modesPage > 0) { modesPage--; renderModesPage(true); playClick(); } }
+function modesNext() {
+  const total = Math.ceil(MODES_DATA.length / MODES_PER_PAGE);
+  if (modesPage < total - 1) { modesPage++; renderModesPage(true); playClick(); }
+}
+
+/* ============================
+   THE FIX: const DECKS = [...]
+   ============================ */
+const DECKS = [
+  { id: 'explore',    label: '🧭 Explorer' },
+  { id: 'date',       label: '💫 Date Night' },
+  { id: 'friends',    label: '🎲 Squad' },
+  { id: 'pitch',      label: '🎯 Pitch' },
+  { id: 'power',      label: '⚡ Power' },
+  { id: 'money',      label: '💰 Money' },
+  { id: 'psychology', label: '🧠 Psych' },
+  { id: 'history',    label: '📜 History' },
+  { id: 'religion',   label: '✨ Belief' },
+  { id: 'media',      label: '📱 Media' },
+  { id: 'mysg',       label: '🌺 MY/SG' },
+  { id: 'random',     label: '🎰 Chaos' },
+];
+
+function initDeckTabs() {
+  const wrap = document.getElementById('deckTabs');
+  wrap.innerHTML = DECKS.map(d =>
+    `<button class="deck-tab${d.id === 'explore' ? ' active' : ''}" onclick="switchDeck('${d.id}')">${d.label}</button>`
+  ).join('');
+}
+function switchDeck(id) {
+  currentDeck = id;
+  document.querySelectorAll('.deck-tab').forEach((t, i) => {
+    t.classList.toggle('active', DECKS[i].id === id);
+  });
+  currentQIndex = 0;
+  shuffleAll();
+}
+
+/* QUESTIONS */
+function shuffleAll() {
+  const arr = getQuestionsForDeck(currentDeck);
+  shuffledQuestions = arr.sort(() => Math.random() - 0.5);
+  currentQIndex = 0;
+  renderQuestion(false);
+  const btn = document.querySelector('.btn-shuffle');
+  if (btn) { btn.style.transform = 'rotate(360deg)'; setTimeout(() => btn.style.transform = '', 300); }
+}
+
+function getQuestionsForDeck(deck) {
+  if (deck === 'random') {
+    return ALL_TOPICS.map(t => ({
+      text: `What do you actually know about: "${t.text}"?`,
+      category: t.cat,
+      hint: t.hint
+    }));
+  }
+  const base = QUESTIONS[deck] || QUESTIONS.explore;
+  const catMap = {
+    power: ['power','history'],
+    money: ['money','society'],
+    psychology: ['psychology'],
+    history: ['history','ancient'],
+    religion: ['religion'],
+    media: ['media','culture'],
+    mysg: ['mysg'],
+  };
+  const cats = catMap[deck];
+  const topicQs = cats
+    ? ALL_TOPICS.filter(t => cats.includes(t.cat)).map(t => ({
+        text: `Dig deeper: "${t.text}" — what's the real story?`,
+        category: t.cat,
+        hint: t.hint
+      }))
+    : ALL_TOPICS.slice(0, 20).map(t => ({
+        text: `How much do you really know about ${t.text}?`,
+        category: t.cat,
+        hint: t.hint
+      }));
+  return [...base.map(q => ({ text: q, category: deck, hint: null })), ...topicQs];
+}
+
+function renderQuestion(animate = true) {
+  const card = document.getElementById('questionCard');
+  const q = shuffledQuestions[currentQIndex];
+  if (!q) return;
+  const catKey = q.category || 'explore';
+  const catInfo = CATEGORIES[catKey] || { label: 'Explore', color: '#ff3d00' };
+  if (animate) {
+    card.classList.add('leaving');
+    setTimeout(() => {
+      card.classList.remove('leaving');
+      card.classList.remove('entering');
+      void card.offsetWidth;
+      updateCardContent(q, catInfo);
+      card.classList.add('entering');
+    }, 280);
+  } else {
+    updateCardContent(q, catInfo);
+  }
+  updateProgress();
+  updateSaveBtn();
+}
+
+function updateCardContent(q, catInfo) {
+  const card = document.getElementById('questionCard');
+  card.style.setProperty('--q-color', catInfo.color);
+  document.getElementById('qCategory').textContent = catInfo.emoji + ' ' + catInfo.label;
+  document.getElementById('qCategory').style.background = catInfo.color + '15';
+  document.getElementById('qCategory').style.color = catInfo.color;
+  document.getElementById('qCounter').textContent = String(currentQIndex + 1).padStart(2, '0');
+  document.getElementById('questionText').textContent = q.text;
+  const hintEl = document.getElementById('qHint');
+  if (q.hint) { hintEl.textContent = '💡 ' + q.hint; hintEl.style.display = 'block'; }
+  else { hintEl.style.display = 'none'; }
+}
+
+function nextQuestion() {
+  currentQIndex = (currentQIndex + 1) % shuffledQuestions.length;
+  renderQuestion(true);
+  playClick();
+}
+
+function updateProgress() {
+  const total = shuffledQuestions.length;
+  const pct = Math.round(((currentQIndex + 1) / total) * 100);
+  document.getElementById('progressLabel').textContent = `Question ${currentQIndex + 1} of ${total}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+/* SAVE */
+function toggleSave() {
+  const q = shuffledQuestions[currentQIndex];
+  if (!q) return;
+  const text = q.text;
+  const idx = savedQuestions.indexOf(text);
+  if (idx === -1) { savedQuestions.push(text); spawnConfetti(); }
+  else { savedQuestions.splice(idx, 1); }
+  localStorage.setItem('bq_saved', JSON.stringify(savedQuestions));
+  updateSaveBtn();
+  renderSaved();
+}
+function updateSaveBtn() {
+  const btn = document.getElementById('saveBtn');
+  const q = shuffledQuestions[currentQIndex];
+  if (!q) return;
+  btn.classList.toggle('saved', savedQuestions.includes(q.text));
+}
+
+/* SAVED CAROUSEL */
+let savedPage = 0;
+
+function renderSaved() {
+  const list = document.getElementById('savedList');
+  if (savedQuestions.length === 0) {
+    list.innerHTML = '<div class="empty-state"><span class="empty-icon">⭐</span><p>Star questions to save them here</p></div>';
+    return;
+  }
+  savedPage = Math.min(savedPage, savedQuestions.length - 1);
+  const slides = savedQuestions.map((q, i) =>
+    `<div class="saved-car-slide">
+      <div class="saved-car-card">
+        <div class="saved-car-label">&#10022; Saved question ${i + 1} of ${savedQuestions.length}</div>
+        <div class="saved-car-q">${q}</div>
+        <div class="saved-car-actions">
+          <div class="saved-car-nav">
+            <button class="saved-car-btn" onclick="savedGo(${i - 1})" ${i === 0 ? 'disabled' : ''}>&#8592;</button>
+            <span class="saved-car-counter">${i + 1} / ${savedQuestions.length}</span>
+            <button class="saved-car-btn" onclick="savedGo(${i + 1})" ${i === savedQuestions.length - 1 ? 'disabled' : ''}>&#8594;</button>
+          </div>
+          <button class="saved-car-remove" onclick="removeSaved(${i})">Remove &#10005;</button>
+        </div>
+      </div>
+    </div>`
+  ).join('');
+  const dots = savedQuestions.map((_, i) =>
+    `<button class="sv-dot${i === savedPage ? ' active' : ''}" onclick="savedGo(${i})"></button>`
+  ).join('');
+  list.innerHTML = `
+    <div class="saved-carousel">
+      <div class="saved-car-viewport">
+        <div class="saved-car-track" id="savedTrack">${slides}</div>
+      </div>
+      <div class="saved-car-dots" id="savedDots">${dots}</div>
+    </div>`;
+  const track = document.getElementById('savedTrack');
+  track.style.transition = 'none';
+  track.style.transform = `translateX(-${savedPage * 100}%)`;
+}
+
+function savedGo(i) {
+  if (i < 0 || i >= savedQuestions.length) return;
+  savedPage = i;
+  const track = document.getElementById('savedTrack');
+  if (!track) return;
+  track.style.transition = 'transform 0.4s cubic-bezier(0.4,0,0.2,1)';
+  track.style.transform = `translateX(-${savedPage * 100}%)`;
+  document.querySelectorAll('.sv-dot').forEach((d, idx) => d.classList.toggle('active', idx === savedPage));
+  document.querySelectorAll('.saved-car-slide').forEach((slide, idx) => {
+    const btns = slide.querySelectorAll('.saved-car-btn');
+    if (btns[0]) btns[0].disabled = idx === 0;
+    if (btns[1]) btns[1].disabled = idx === savedQuestions.length - 1;
+  });
+  playClick();
+}
+
+function removeSaved(i) {
+  savedQuestions.splice(i, 1);
+  localStorage.setItem('bq_saved', JSON.stringify(savedQuestions));
+  savedPage = Math.max(0, Math.min(savedPage, savedQuestions.length - 1));
+  renderSaved();
+}
+function initSaved() { renderSaved(); }
+
+/* MODE */
+function setMode(mode) {
+  currentMode = mode;
+  const validDecks = Object.keys(QUESTIONS);
+  const deck = validDecks.includes(mode) ? mode : 'explore';
+  switchDeck(deck);
+}
+
+/* USE CASE */
+function setUseCase(key) {
+  document.querySelectorAll('.usecase-card').forEach(c => c.classList.remove('active'));
+  document.querySelector(`[data-case="${key}"]`).classList.add('active');
+  const data = USE_CASE_QUESTIONS[key];
+  if (!data) return;
+  document.getElementById('crTitle').textContent = data.title;
+  document.getElementById('crList').innerHTML = data.questions.map(q => `<li>${q}</li>`).join('');
+  document.getElementById('contextResult').classList.add('show');
+  playClick();
+}
+
+/* TOPICS CAROUSEL */
+const CAT_FILTERS = ['all', ...Object.keys(CATEGORIES)];
+const CARDS_PER_PAGE = 1;
+let carouselPage = 0;
+let carouselItems = [];
+
+function initTopics() {
+  const filterWrap = document.getElementById('topicsFilter');
+  filterWrap.innerHTML = CAT_FILTERS.map(cat =>
+    `<button class="filter-btn${cat === 'all' ? ' active' : ''}" onclick="filterTopics('${cat}')">
+      ${cat === 'all' ? '&#10022; All' : CATEGORIES[cat].emoji + ' ' + CATEGORIES[cat].label}
+    </button>`
+  ).join('');
+  buildCarousel();
+}
+
+function filterTopics(cat) {
+  currentTopicFilter = cat;
+  carouselPage = 0;
+  document.querySelectorAll('.filter-btn').forEach((b, i) => {
+    b.classList.toggle('active', CAT_FILTERS[i] === cat);
+  });
+  buildCarousel();
+}
+
+function buildCarousel() {
+  carouselItems = currentTopicFilter === 'all'
+    ? ALL_TOPICS
+    : ALL_TOPICS.filter(t => t.cat === currentTopicFilter);
+  const track = document.getElementById('carouselTrack');
+  const totalPages = Math.ceil(carouselItems.length / CARDS_PER_PAGE);
+  track.style.transition = 'none';
+  track.style.width = `${totalPages * 100}%`;
+  track.style.transform = 'translateX(0)';
+  track.innerHTML = carouselItems.map((t) => {
+    const catInfo = CATEGORIES[t.cat] || { label: t.cat, color: '#ff3d00' };
+    return `<div class="topic-pill" onclick="jumpToTopic(${t.id})" style="min-width:${100/totalPages}%;max-width:${100/totalPages}%;border-left:3px solid ${catInfo.color}40">
+      <span class="topic-num">${String(t.id).padStart(2,'0')}</span>
+      <div>
+        <div class="topic-name">${t.text}</div>
+        <div class="topic-cat">${catInfo.emoji} ${catInfo.label}</div>
+      </div>
+    </div>`;
+  }).join('');
+  const dotsWrap = document.getElementById('carouselDots');
+  dotsWrap.innerHTML = Array.from({length: totalPages}, (_, i) =>
+    `<button class="c-dot${i === 0 ? ' active' : ''}" onclick="goToPage(${i})" title="Page ${i+1}"></button>`
+  ).join('');
+  carouselPage = 0;
+  renderCarouselPage(false);
+}
+
+function getPadding(count, pages) {
+  const total = pages * CARDS_PER_PAGE;
+  const needed = total - count;
+  return Array.from({length: needed}, () =>
+    `<div style="visibility:hidden;border:none;box-shadow:none;background:none;"></div>`
+  ).join('');
+}
+
+function renderCarouselPage(animate = true) {
+  const track = document.getElementById('carouselTrack');
+  const totalPages = Math.ceil(carouselItems.length / CARDS_PER_PAGE);
+  const pct = carouselPage * (100 / totalPages);
+  track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.4,0,0.2,1)' : 'none';
+  track.style.transform = `translateX(-${pct}%)`;
+  document.querySelectorAll('.c-dot').forEach((d, i) => d.classList.toggle('active', i === carouselPage));
+  const start = carouselPage * CARDS_PER_PAGE + 1;
+  const end = Math.min(start + CARDS_PER_PAGE - 1, carouselItems.length);
+  document.getElementById('carouselCount').textContent =
+    `Page ${carouselPage + 1} of ${totalPages} · showing ${start}–${end} of ${carouselItems.length}`;
+  document.getElementById('carrPrev').disabled = carouselPage === 0;
+  document.getElementById('carrNext').disabled = carouselPage >= totalPages - 1;
+  playClick();
+}
+
+function carouselNext() {
+  const totalPages = Math.ceil(carouselItems.length / CARDS_PER_PAGE);
+  if (carouselPage < totalPages - 1) { carouselPage++; renderCarouselPage(); }
+}
+function carouselPrev() {
+  if (carouselPage > 0) { carouselPage--; renderCarouselPage(); }
+}
+function goToPage(i) { carouselPage = i; renderCarouselPage(); }
+
+document.addEventListener('keydown', e => {
+  const topicsEl = document.getElementById('topics');
+  const rect = topicsEl.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (e.key === 'ArrowRight') carouselNext();
+    if (e.key === 'ArrowLeft') carouselPrev();
+  }
+});
+
+(function() {
+  let startX = 0;
+  const vp = () => document.getElementById('carouselViewport');
+  document.addEventListener('touchstart', e => {
+    if (vp() && vp().contains(e.target)) startX = e.touches[0].clientX;
+  }, {passive:true});
+  document.addEventListener('touchend', e => {
+    if (!vp() || !vp().contains(e.target)) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) { dx < 0 ? carouselNext() : carouselPrev(); }
+  }, {passive:true});
+})();
+
+function jumpToTopic(id) {
+  const topic = ALL_TOPICS.find(t => t.id === id);
+  if (!topic) return;
+  shuffledQuestions = [{ text: `What do you actually know about: "${topic.text}"?`, category: topic.cat, hint: topic.hint }];
+  currentQIndex = 0;
+  renderQuestion(true);
+  document.getElementById('game').scrollIntoView({ behavior: 'smooth' });
+  playClick();
+}
+
+/* RAPID FIRE */
+function startRapidFire() {
+  shuffledRapid = ALL_TOPICS.sort(() => Math.random() - 0.5);
+  rapidQIndex = 0; rapidScore = 0; rapidPassed = 0; rapidTime = 30;
+  document.getElementById('rapidIdle').style.display = 'none';
+  document.getElementById('rapidEnd').style.display = 'none';
+  document.getElementById('rapidGame').style.display = 'block';
+  updateRapidQ();
+  rapidTimer = setInterval(tickRapid, 1000);
+  playBeep();
+}
+
+function updateRapidQ() {
+  const t = shuffledRapid[rapidQIndex % shuffledRapid.length];
+  document.getElementById('rapidQ').textContent = t.text;
+  document.getElementById('rapidScore').textContent = `SCORE: ${rapidScore} | PASSED: ${rapidPassed}`;
+}
+
+function tickRapid() {
+  rapidTime--;
+  const el = document.getElementById('rapidTimer');
+  el.textContent = rapidTime;
+  el.classList.toggle('urgent', rapidTime <= 10);
+  if (rapidTime <= 0) endRapidFire();
+}
+
+function rapidAnswer(correct) {
+  if (!rapidActive && rapidTime > 0) rapidActive = true;
+  if (correct) { rapidScore++; playPing(); spawnConfetti(); }
+  else { rapidPassed++; }
+  rapidQIndex++;
+  updateRapidQ();
+}
+
+function endRapidFire() {
+  clearInterval(rapidTimer);
+  rapidActive = false;
+  document.getElementById('rapidGame').style.display = 'none';
+  document.getElementById('rapidEnd').style.display = 'block';
+  document.getElementById('rapidFinalScore').textContent = rapidScore;
+  const msgs = ['Not bad!','Nice one!','You\'re on fire!','BEAST MODE!','Intellectual God!'];
+  const msg = msgs[Math.min(Math.floor(rapidScore / 3), msgs.length - 1)];
+  document.getElementById('rapidResult').textContent = `questions answered! ${msg}`;
+  document.getElementById('rapidEndStats').textContent = `ANSWERED: ${rapidScore} | PASSED: ${rapidPassed}`;
+  if (rapidScore > 5) { for (let i = 0; i < 20; i++) setTimeout(spawnConfetti, i * 100); }
+}
+
+/* CONFETTI */
+function spawnConfetti() {
+  const colors = ['#ff3d00','#7c3aed','#0ea5e9','#16a34a','#f59e0b','#ec4899'];
+  for (let i = 0; i < 8; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `left:${Math.random()*100}vw;top:-20px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*10}px;height:${6+Math.random()*10}px;border-radius:${Math.random()>0.5?'50%':'2px'};animation-duration:${1+Math.random()}s;animation-delay:${Math.random()*0.3}s;`;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
+}
+
+/* COUNTERS */
+function animateCounters() {
+  const animate = (el, target) => {
+    let start = 0;
+    const step = Math.ceil(target / 50);
+    const interval = setInterval(() => {
+      start = Math.min(start + step, target);
+      el.textContent = start;
+      if (start >= target) clearInterval(interval);
+    }, 30);
+  };
+  setTimeout(() => {
+    animate(document.getElementById('countUp1'), 260);
+    animate(document.getElementById('countUp2'), 400);
+  }, 500);
+}
+
+/* SOUNDS */
+function playClick() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator(); const gain = ctx.createGain();
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.setValueAtTime(440, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.1);
+    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
+    osc.start(); osc.stop(ctx.currentTime + 0.1);
+  } catch(e) {}
+}
+function playPing() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const osc = ctx.createOscillator(); const gain = ctx.createGain();
+    osc.type = 'sine'; osc.connect(gain); gain.connect(ctx.destination);
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.15);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+    osc.start(); osc.stop(ctx.currentTime + 0.3);
+  } catch(e) {}
+}
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [0, 0.15, 0.3].forEach(delay => {
+      const osc = ctx.createOscillator(); const gain = ctx.createGain();
+      osc.type = 'square'; osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = 660;
+      gain.gain.setValueAtTime(0.08, ctx.currentTime + delay);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + delay + 0.1);
+      osc.start(ctx.currentTime + delay); osc.stop(ctx.currentTime + delay + 0.1);
+    });
+  } catch(e) {}
+}
+
+/* RAPID BLOBS */
+function initRapidBlobs() {
+  const bg = document.getElementById('rapidBg');
+  const colors = ['rgba(255,61,0,0.1)','rgba(124,58,237,0.08)','rgba(14,165,233,0.08)'];
+  for (let i = 0; i < 3; i++) {
+    const blob = document.createElement('div');
+    blob.className = 'rapid-blob';
+    const size = 200 + Math.random() * 300;
+    blob.style.cssText = `width:${size}px;height:${size}px;background:${colors[i]};top:${Math.random()*100}%;left:${Math.random()*100}%;animation-delay:${i*-2}s;animation-duration:${6+i*2}s;`;
+    bg.appendChild(blob);
+  }
+}
+
+/* PARALLAX */
+function initParallax() {
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    document.querySelectorAll('.hero-circle').forEach((el, i) => {
+      el.style.transform = `translateY(${scrollY * (0.1 + i * 0.05)}px)`;
+    });
+  });
+}
+
+/* SCRAMBLE TITLE */
+(function scramble() {
+  const el = document.getElementById('scramble-title');
+  if (!el) return;
+  const target = 'QUEST';
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$';
+  let frame = 0;
+  const interval = setInterval(() => {
+    el.textContent = target.split('').map((char, i) =>
+      frame > i * 4 ? char : chars[Math.floor(Math.random() * chars.length)]
+    ).join('');
+    frame++;
+    if (frame > target.length * 4 + 10) { el.textContent = target; clearInterval(interval); }
+  }, 50);
+})();
+</script>
+</body>
+</html>
