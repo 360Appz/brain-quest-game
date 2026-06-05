@@ -73,23 +73,59 @@ body::before{
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:1rem 2rem;
+  padding:0.9rem 2.5rem;
   background:var(--bg);
   border-bottom:1.5px solid var(--border);
   backdrop-filter:blur(20px);
   transition:background 0.4s;
+  height:64px;
 }
 .nav-logo{
-  font-family:var(--font-display);font-size:0.75rem;font-weight:900;
+  font-family:var(--font-display);font-weight:900;
   letter-spacing:0.08em;color:var(--text);text-transform:uppercase;
-  display:flex;align-items:center;gap:0.5rem;
+  display:flex;align-items:center;gap:0.6rem;
+  font-size:1rem;
+  white-space:nowrap;
+  flex-shrink:0;
 }
+.nav-logo .full{display:inline;font-size:0.9rem;letter-spacing:0.05em;}
+.nav-logo .short{display:none;}
 .nav-logo span{
-  display:inline-block;width:10px;height:10px;
+  display:inline-block;width:12px;height:12px;
   background:var(--accent1);border-radius:50%;
   animation:pulse 2s ease-in-out infinite;
+  flex-shrink:0;
 }
-.nav-actions{display:flex;align-items:center;gap:1rem;}
+.nav-menu{display:flex;align-items:center;gap:1.75rem;flex:1;margin-left:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-behavior:smooth;padding:0 0.25rem;}
+.nav-menu::-webkit-scrollbar{display:none;}
+.nav-menu a{
+  color:var(--text2);text-decoration:none;font-size:0.95rem;font-weight:500;
+  cursor:none;transition:all 0.2s;position:relative;
+}
+.nav-menu a::after{
+  content:'';position:absolute;bottom:-8px;left:0;width:0;height:2px;
+  background:var(--accent1);transition:width 0.3s ease;
+}
+.nav-menu a:hover{color:var(--text);}
+.nav-menu a:hover::after{width:100%;}
+.nav-actions{display:flex;align-items:center;gap:1.5rem;flex-shrink:0;}
+.nav-hamburger{display:none;background:none;border:none;font-size:1.5rem;cursor:none;color:var(--text);padding:0;width:40px;height:40px;align-items:center;justify-content:center;flex-shrink:0;}
+.nav-hamburger:hover{color:var(--accent1);}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--bg);border-bottom:1.5px solid var(--border);flex-direction:column;gap:0;padding:0;z-index:99;height:min(52vh,400px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+.mobile-menu.active{display:flex;}
+.mobile-menu a{
+  color:var(--text2);text-decoration:none;font-size:0.95rem;font-weight:500;
+  cursor:none;transition:color 0.2s;padding:0.85rem 1.5rem;border-bottom:1px solid var(--border);display:block;
+}
+.mobile-menu a:hover{color:var(--accent1);}
+@media(max-width:768px){
+  .nav-logo{font-size:0.65rem;gap:0.4rem;}
+  .nav-logo .full{display:none;}
+  .nav-logo .short{display:inline;}
+  .nav-menu{display:none;}
+  .nav-hamburger{display:flex;}
+  nav{padding:1rem;}
+}
 .btn-ghost{
   background:none;border:1.5px solid var(--border2);
   color:var(--text);padding:0.4rem 1rem;border-radius:100px;
@@ -99,11 +135,12 @@ nav{
 .btn-ghost:hover{background:var(--text);color:var(--bg);}
 .theme-toggle{
   background:none;border:1.5px solid var(--border2);
-  width:40px;height:40px;border-radius:50%;
+  width:44px;height:44px;border-radius:50%;
   display:flex;align-items:center;justify-content:center;
-  cursor:none;transition:all 0.2s;font-size:1rem;
+  cursor:none;transition:all 0.2s;font-size:1.1rem;
+  color:var(--text);
 }
-.theme-toggle:hover{background:var(--text);transform:rotate(20deg);}
+.theme-toggle:hover{background:var(--text);color:var(--bg);border-color:var(--text);transform:rotate(20deg);}
 .hero{
   min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
@@ -277,16 +314,28 @@ nav{
 #carouselDots{display:none;}
 .game-section{padding:4rem 2rem 6rem;}
 .game-container{max-width:800px;margin:0 auto;}
-.deck-tabs{display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap;}
+.deck-tabs{display:flex;gap:0.5rem;margin-bottom:2rem;flex-wrap:wrap;align-items:center;position:relative;}
+.deck-tabs-container{position:relative;display:flex;align-items:center;gap:0.75rem;width:100%;}
+.deck-tabs-scroll{display:flex;gap:0.5rem;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:0.25rem 0;flex:1;}
+.deck-tabs-scroll::-webkit-scrollbar{display:none;}
 .deck-tab{
   padding:0.5rem 1.25rem;border-radius:100px;
   border:1.5px solid var(--border);
   background:var(--bg3);color:var(--text2);
   font-family:var(--font-body);font-size:0.85rem;font-weight:500;
-  cursor:none;transition:all 0.2s;
+  cursor:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;
 }
 .deck-tab.active{background:var(--text);color:var(--bg);border-color:var(--text);}
 .deck-tab:hover:not(.active){border-color:var(--border2);}
+.deck-tabs-nav{display:none;gap:0.5rem;}
+.deck-tabs-nav button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border2);background:var(--bg3);display:flex;align-items:center;justify-content:center;cursor:none;font-size:0.9rem;color:var(--text);transition:all 0.2s;flex-shrink:0;}
+.deck-tabs-nav button:hover:not(:disabled){background:var(--text);color:var(--bg);border-color:var(--text);}
+.deck-tabs-nav button:disabled{opacity:0.3;pointer-events:none;}
+@media(max-width:768px){
+  .deck-tabs{gap:0.5rem;}
+  .deck-tabs-nav{display:flex;}
+  .deck-tabs-container{width:100%;gap:0.5rem;}
+}
 .q-card-wrap{perspective:1000px;margin-bottom:1.5rem;}
 .q-card{
   background:var(--bg3);border:1.5px solid var(--border);
@@ -398,28 +447,44 @@ nav{
 .rapid-bg-anim{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
 .rapid-blob{position:absolute;border-radius:50%;animation:blob-move 6s ease-in-out infinite;}
 .topics-section{padding:5rem 2rem;}
-.topics-filter{display:flex;gap:0.5rem;flex-wrap:wrap;max-width:1100px;margin:0 auto 2rem;}
+.topics-filter{display:flex;gap:0.5rem;flex-wrap:wrap;max-width:1100px;margin:0 auto 2rem;align-items:center;position:relative;}
+.topics-filter-container{position:relative;display:flex;align-items:center;gap:0.75rem;width:100%;}
+.topics-filter-scroll{display:flex;gap:0.5rem;overflow-x:auto;overflow-y:hidden;scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;padding:0.25rem 0;flex:1;}
+.topics-filter-scroll::-webkit-scrollbar{display:none;}
 .filter-btn{
   padding:0.45rem 1rem;border-radius:100px;
   border:1.5px solid var(--border);
   background:var(--bg3);color:var(--text2);
   font-size:0.8rem;font-weight:500;font-family:var(--font-body);
-  cursor:none;transition:all 0.2s;
+  cursor:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;
 }
 .filter-btn.active{background:var(--text);color:var(--bg);border-color:var(--text);}
 .filter-btn:hover:not(.active){border-color:var(--border2);}
+.topics-filter-nav{display:none;gap:0.5rem;}
+.topics-filter-nav button{width:36px;height:36px;border-radius:50%;border:1.5px solid var(--border2);background:var(--bg3);display:flex;align-items:center;justify-content:center;cursor:none;font-size:0.9rem;color:var(--text);transition:all 0.2s;flex-shrink:0;}
+.topics-filter-nav button:hover:not(:disabled){background:var(--text);color:var(--bg);border-color:var(--text);}
+.topics-filter-nav button:disabled{opacity:0.3;pointer-events:none;}
+@media(max-width:768px){
+  .topics-filter{gap:0.5rem;}
+  .topics-filter-nav{display:flex;}
+  .topics-filter-container{width:100%;gap:0.5rem;}
+}
 .carousel-shell{max-width:1100px;margin:0 auto;position:relative;}
 .carousel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
 .carousel-count{font-family:var(--font-mono);font-size:0.75rem;color:var(--text3);letter-spacing:0.08em;}
 .carousel-arrows{display:flex;gap:0.5rem;}
 .carr-btn{
-  width:40px;height:40px;border-radius:50%;
-  border:1.5px solid var(--border2);background:var(--bg3);
+  padding:0.5rem 0.85rem;border-radius:100px;
+  border:1.5px solid var(--border);background:var(--bg3);
   display:flex;align-items:center;justify-content:center;
-  cursor:none;font-size:1rem;color:var(--text);
-  transition:all 0.2s;box-shadow:var(--card-shadow);
+  cursor:none;color:var(--text2);
+  font-size:0.85rem;font-family:var(--font-body);font-weight:500;
+  transition:all 0.2s;white-space:nowrap;flex-shrink:0;
 }
-.carr-btn:hover{background:var(--text);color:var(--bg);border-color:var(--text);transform:scale(1.08);}
+.carr-btn svg{width:16px;height:16px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;transition:transform 0.2s;}
+.carr-btn:hover{border-color:var(--border2);color:var(--text);}
+.carr-btn#modesPrev:hover svg,.carr-btn#carrPrev:hover svg{transform:translateX(-2px);}
+.carr-btn#modesNext:hover svg,.carr-btn#carrNext:hover svg{transform:translateX(2px);}
 .carr-btn:disabled{opacity:0.3;pointer-events:none;}
 .carousel-viewport{overflow:hidden;border-radius:20px;position:relative;}
 .carousel-track{
@@ -507,6 +572,37 @@ nav{
 .sv-dot.active{background:var(--accent5);width:20px;border-radius:4px;}
 .empty-state{text-align:center;padding:3rem;color:var(--text3);font-size:0.95rem;}
 .empty-icon{font-size:3rem;display:block;margin-bottom:1rem;opacity:0.4;}
+/* Occasion Modal */
+.occasion-modal-overlay{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:1.5rem;
+}
+.occasion-modal-overlay.open{display:flex;}
+.occasion-modal{
+  background:var(--bg3);border:1.5px solid var(--border);
+  border-radius:24px;padding:2.5rem;
+  max-width:560px;width:100%;
+  position:relative;overflow:hidden;
+  box-shadow:0 24px 60px rgba(0,0,0,0.25);
+  animation:fadeup 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.occasion-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent1);border-radius:24px 24px 0 0;}
+.occasion-modal-close{
+  position:absolute;top:1.25rem;right:1.25rem;
+  background:none;border:1.5px solid var(--border2);
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  cursor:none;font-size:1rem;color:var(--text2);
+  transition:all 0.2s;
+}
+.occasion-modal-close:hover{background:var(--text);color:var(--bg);border-color:var(--text);}
+.occasion-modal .cr-label{font-family:var(--font-mono);font-size:0.7rem;color:var(--text3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1rem;}
+.occasion-modal .cr-title{font-family:var(--font-display);font-size:1.3rem;font-weight:700;color:var(--text);margin-bottom:1rem;}
+.occasion-modal .cr-questions{list-style:none;}
+.occasion-modal .cr-questions li{padding:0.75rem 0;border-bottom:1px solid var(--border);font-size:0.95rem;color:var(--text2);display:flex;align-items:flex-start;gap:0.75rem;}
+.occasion-modal .cr-questions li::before{content:'→';color:var(--accent1);flex-shrink:0;margin-top:0.1rem;}
+.occasion-modal .cr-questions li:last-child{border-bottom:none;}
 .marquee-section{padding:2rem 0;overflow:hidden;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border);}
 .marquee-track{display:flex;gap:3rem;animation:marquee 25s linear infinite;white-space:nowrap;width:max-content;}
 .marquee-track:hover{animation-play-state:paused;}
@@ -537,19 +633,77 @@ footer{padding:4rem 2rem 2rem;border-top:1.5px solid var(--border);text-align:ce
 ::-webkit-scrollbar-track{background:var(--bg);}
 ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
 .confetti-piece{position:fixed;width:10px;height:10px;pointer-events:none;z-index:1000;border-radius:2px;animation:confetti-fall 1.5s ease-in forwards;}
+/* ====== TRIVIA SECTION ====== */
+.trivia-section{padding:5rem 2rem;}
+.trivia-controls-bar{max-width:1100px;margin:0 auto 2rem;display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:flex-start;}
+.trivia-filter-group{display:flex;flex-direction:column;gap:0.6rem;}
+.trivia-filter-group.trivia-type-group{flex:1;min-width:160px;}
+.trivia-filter-label{font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.12em;color:var(--text3);text-transform:uppercase;}
+.trivia-btn-group{display:flex;gap:0.4rem;flex-wrap:wrap;}
+.trivia-pill{padding:0.4rem 0.9rem;border-radius:100px;border:1.5px solid var(--border);background:var(--bg3);color:var(--text2);font-family:var(--font-body);font-size:0.8rem;font-weight:500;cursor:none;transition:all 0.2s;white-space:nowrap;}
+.trivia-pill.active{background:var(--text);color:var(--bg);border-color:var(--text);}
+.trivia-pill:hover:not(.active){border-color:var(--border2);}
+.trivia-loading{text-align:center;padding:2.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:1rem;color:var(--text2);font-size:0.9rem;}
+.trivia-spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent3);border-radius:50%;animation:spin 0.8s linear infinite;}
+.trivia-error{text-align:center;padding:2rem;}
+.trivia-error p{color:var(--text2);font-size:0.9rem;margin-bottom:1rem;}
+.trivia-answers{display:flex;flex-direction:column;gap:0.55rem;margin-top:1.25rem;}
+.trivia-ans-btn{width:100%;text-align:left;padding:0.75rem 1rem;border-radius:12px;border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:0.85rem;line-height:1.4;cursor:none;transition:all 0.18s;display:flex;align-items:center;gap:0.65rem;}
+.trivia-ans-btn:hover:not(:disabled){border-color:var(--accent3);background:rgba(14,165,233,0.05);}
+.trivia-ans-btn.correct{background:rgba(22,163,74,0.1)!important;border-color:var(--accent4)!important;color:var(--accent4)!important;}
+.trivia-ans-btn.wrong{background:rgba(220,38,38,0.08)!important;border-color:#dc2626!important;color:#dc2626!important;}
+.trivia-ans-btn:disabled{cursor:default;}
+.trivia-ans-btn.correct:disabled,.trivia-ans-btn.wrong:disabled{opacity:1;}
+.trivia-ans-letter{width:24px;height:24px;min-width:24px;border-radius:50%;border:1.5px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;font-family:var(--font-mono);flex-shrink:0;}
+.trivia-result{margin-top:0.85rem;padding:0.75rem 1rem;border-radius:10px;font-size:0.85rem;line-height:1.5;font-weight:500;}
+.trivia-result.correct-msg{background:rgba(22,163,74,0.1);color:var(--accent4);}
+.trivia-result.wrong-msg{background:rgba(220,38,38,0.08);color:#dc2626;}
+.trivia-badge{font-family:var(--font-mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.2rem 0.6rem;border-radius:100px;background:var(--bg2);color:var(--text3);}
+.trivia-end{text-align:center;padding:2.5rem 1rem 1rem;}
+.trivia-end-score{font-family:var(--font-display);font-size:3.5rem;font-weight:900;color:var(--text);line-height:1;margin-bottom:0.4rem;}
+.trivia-end-msg{font-size:1rem;color:var(--text2);margin-bottom:1.5rem;}
+/* Trivia modal */
+.trivia-modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.55);backdrop-filter:blur(6px);align-items:flex-end;justify-content:center;}
+.trivia-modal-overlay.open{display:flex;}
+.trivia-modal{background:var(--bg3);border:1.5px solid var(--border);border-radius:24px 24px 0 0;width:100%;max-width:520px;max-height:88vh;display:flex;flex-direction:column;box-shadow:0 -8px 48px rgba(0,0,0,0.2);animation:slide-up-modal 0.32s cubic-bezier(0.4,0,0.2,1);}
+@media(min-width:600px){.trivia-modal-overlay{align-items:center;padding:1.5rem;}.trivia-modal{border-radius:24px;max-height:82vh;box-shadow:0 24px 60px rgba(0,0,0,0.25);animation:fadeup 0.3s cubic-bezier(0.4,0,0.2,1);}}
+.trivia-modal-head{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.5rem;border-bottom:1px solid var(--border);flex-shrink:0;border-radius:24px 24px 0 0;background:var(--bg3);}
+.trivia-modal-title{font-family:var(--font-display);font-size:0.85rem;font-weight:700;color:var(--text);letter-spacing:0.03em;}
+.trivia-modal-body{padding:1.25rem 1.5rem 1.5rem;overflow-y:auto;flex:1;-webkit-overflow-scrolling:touch;}
+.trivia-modal .q-card{min-height:0;padding:1.25rem;}
+.trivia-modal .q-card::before{border-radius:20px 20px 0 0;}
+.trivia-modal .q-text{font-size:clamp(1rem,2.5vw,1.2rem)!important;min-height:unset!important;display:block!important;margin-bottom:0!important;}
+@keyframes slide-up-modal{from{transform:translateY(60px);opacity:0;}to{transform:translateY(0);opacity:1;}}
 </style>
 </head>
 <body>
 <div id="cursor"></div>
 <div id="cursor2"></div>
 <nav>
-  <div class="nav-logo"><span></span> Brain Quest</div>
+  <div class="nav-logo"><span></span><span class="full">Brain Quest</span><span class="short">BQ</span></div>
+  <div class="nav-menu">
+    <a href="#modes" onclick="scrollTo({top:document.getElementById('modes').offsetTop,behavior:'smooth'});closeMobileMenu()">Choose Mode</a>
+    <a href="#occasion" onclick="scrollTo({top:document.getElementById('occasion').offsetTop,behavior:'smooth'});closeMobileMenu()">Occasion</a>
+    <a href="#game" onclick="scrollTo({top:document.getElementById('game').offsetTop,behavior:'smooth'});closeMobileMenu()">Play</a>
+    <a href="#rapid" onclick="scrollTo({top:document.getElementById('rapid').offsetTop,behavior:'smooth'});closeMobileMenu()">Rapid Fire</a>
+    <a href="#topics" onclick="scrollTo({top:document.getElementById('topics').offsetTop,behavior:'smooth'});closeMobileMenu()">100 Topics</a>
+    <a href="#saved" onclick="scrollTo({top:document.getElementById('saved').offsetTop,behavior:'smooth'});closeMobileMenu()">Saved</a>
+    <a href="#trivia" onclick="scrollTo({top:document.getElementById('trivia').offsetTop,behavior:'smooth'});closeMobileMenu()">Live Trivia</a>
+  </div>
   <div class="nav-actions">
-    <button class="btn-ghost" onclick="scrollTo({top:document.getElementById('game').offsetTop,behavior:'smooth'})">Play ↓</button>
-    <button class="btn-ghost" onclick="scrollTo({top:document.getElementById('topics').offsetTop,behavior:'smooth'})">100 Topics</button>
+    <button class="nav-hamburger" id="menuToggle" onclick="toggleMobileMenu()" title="Menu">☰</button>
     <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">🌙</button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#modes" onclick="scrollTo({top:document.getElementById('modes').offsetTop,behavior:'smooth'});closeMobileMenu()">▶ Choose Mode</a>
+  <a href="#occasion" onclick="scrollTo({top:document.getElementById('occasion').offsetTop,behavior:'smooth'});closeMobileMenu()">▶ What's the Occasion</a>
+  <a href="#game" onclick="scrollTo({top:document.getElementById('game').offsetTop,behavior:'smooth'});closeMobileMenu()">▶ Play Game</a>
+  <a href="#rapid" onclick="scrollTo({top:document.getElementById('rapid').offsetTop,behavior:'smooth'});closeMobileMenu()">▶ Rapid Fire</a>
+  <a href="#topics" onclick="scrollTo({top:document.getElementById('topics').offsetTop,behavior:'smooth'});closeMobileMenu()">▶ 100 Topics</a>
+  <a href="#saved" onclick="scrollTo({top:document.getElementById('saved').offsetTop,behavior:'smooth'});closeMobileMenu()">▶ Saved Questions</a>
+  <a href="#trivia" onclick="scrollTo({top:document.getElementById('trivia').offsetTop,behavior:'smooth'});closeMobileMenu()">▶ Live Trivia</a>
+</div>
 <section class="hero">
   <div class="hero-bg">
     <div class="hero-circle"></div>
@@ -583,22 +737,22 @@ footer{padding:4rem 2rem 2rem;border-top:1.5px solid var(--border);text-align:ce
   </div>
 </section>
 <div class="marquee-section"><div class="marquee-track" id="marqueeTrack"></div></div>
-<section class="modes-section">
+<section class="modes-section" id="modes">
   <div class="section-header">
     <span class="section-label">pick your vibe</span>
     <h2 class="section-title">Choose Your <em>Mode</em></h2>
   </div>
   <div class="modes-car-shell">
     <div class="modes-car-header">
-      <button class="carr-btn" id="modesPrev" onclick="modesPrev()">&#8592;</button>
-      <button class="carr-btn" id="modesNext" onclick="modesNext()">&#8594;</button>
+      <button class="carr-btn" id="modesPrev" onclick="modesPrev()" title="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="carr-btn" id="modesNext" onclick="modesNext()" title="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
     <div class="modes-car-viewport">
       <div class="modes-car-track" id="modesTrack"></div>
     </div>
   </div>
 </section>
-<section class="usecase-section">
+<section class="usecase-section" id="occasion">
   <div class="usecase-inner">
     <div class="section-header">
       <span class="section-label">context matters</span>
@@ -612,20 +766,30 @@ footer{padding:4rem 2rem 2rem;border-top:1.5px solid var(--border);text-align:ce
       <div class="usecase-card" onclick="setUseCase('solo')" data-case="solo"><span class="usecase-emoji">🌙</span><div class="usecase-name">Bored Alone</div></div>
       <div class="usecase-card" onclick="setUseCase('deep')" data-case="deep"><span class="usecase-emoji">🌊</span><div class="usecase-name">Deep Dive</div></div>
     </div>
-    <div class="context-result" id="contextResult">
-      <div class="cr-label" id="crLabel">Suggested for this vibe</div>
-      <div class="cr-title" id="crTitle"></div>
-      <ul class="cr-questions" id="crList"></ul>
-    </div>
   </div>
 </section>
+<!-- Occasion Modal -->
+<div class="occasion-modal-overlay" id="occasionModalOverlay" onclick="closeOccasionModal(event)">
+  <div class="occasion-modal">
+    <button class="occasion-modal-close" onclick="closeOccasionModal()" title="Close">✕</button>
+    <div class="cr-label" id="crLabel">Suggested for this vibe</div>
+    <div class="cr-title" id="crTitle"></div>
+    <ul class="cr-questions" id="crList"></ul>
+  </div>
+</div>
 <section class="game-section" id="game">
   <div class="section-header">
     <span class="section-label">main deck</span>
     <h2 class="section-title">The <em>Question</em> Deck</h2>
   </div>
   <div class="game-container">
-    <div class="deck-tabs" id="deckTabs"></div>
+    <div class="deck-tabs">
+      <div class="deck-tabs-container">
+        <button class="deck-tabs-nav" id="deckTabsPrev" onclick="scrollDeckTabs(-1)" title="Previous decks">&#8592;</button>
+        <div class="deck-tabs-scroll" id="deckTabsScroll"></div>
+        <button class="deck-tabs-nav" id="deckTabsNext" onclick="scrollDeckTabs(1)" title="Next decks">&#8594;</button>
+      </div>
+    </div>
     <div class="progress-wrap">
       <div class="progress-label">
         <span id="progressLabel">Question 1 of —</span>
@@ -685,13 +849,19 @@ footer{padding:4rem 2rem 2rem;border-top:1.5px solid var(--border);text-align:ce
     <span class="section-label">the full list</span>
     <h2 class="section-title">All <em>100</em> Topics</h2>
   </div>
-  <div class="topics-filter" id="topicsFilter"></div>
+  <div class="topics-filter">
+    <div class="topics-filter-container">
+      <button class="topics-filter-nav" id="topicsFilterPrev" onclick="scrollTopicsFilter(-1)" title="Previous filters">&#8592;</button>
+      <div class="topics-filter-scroll" id="topicsFilterScroll"></div>
+      <button class="topics-filter-nav" id="topicsFilterNext" onclick="scrollTopicsFilter(1)" title="Next filters">&#8594;</button>
+    </div>
+  </div>
   <div class="carousel-shell">
     <div class="carousel-header">
       <span class="carousel-count" id="carouselCount">Page 1 of 5 &middot; 100 topics</span>
       <div class="carousel-arrows">
-        <button class="carr-btn" id="carrPrev" onclick="carouselPrev()" title="Previous page">&#8592;</button>
-        <button class="carr-btn" id="carrNext" onclick="carouselNext()" title="Next page">&#8594;</button>
+        <button class="carr-btn" id="carrPrev" onclick="carouselPrev()" title="Previous page"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="carr-btn" id="carrNext" onclick="carouselNext()" title="Next page"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
       </div>
     </div>
     <div class="carousel-viewport" id="carouselViewport">
@@ -700,7 +870,105 @@ footer{padding:4rem 2rem 2rem;border-top:1.5px solid var(--border);text-align:ce
     <div class="carousel-dots" id="carouselDots"></div>
   </div>
 </section>
-<section class="saved-section">
+<section class="trivia-section" id="trivia">
+  <div class="section-header">
+    <span class="section-label">powered by opentdb.com · free &amp; open</span>
+    <h2 class="section-title">Live <em>Trivia</em></h2>
+  </div>
+  <!-- Filters -->
+  <div class="trivia-controls-bar">
+    <div class="trivia-filter-group">
+      <span class="trivia-filter-label">Difficulty</span>
+      <div class="trivia-btn-group" id="triviaDiffGroup">
+        <button class="trivia-pill active" data-diff="" onclick="setTriviaDiff(this,'')">Any</button>
+        <button class="trivia-pill" data-diff="easy" onclick="setTriviaDiff(this,'easy')">Easy</button>
+        <button class="trivia-pill" data-diff="medium" onclick="setTriviaDiff(this,'medium')">Medium</button>
+        <button class="trivia-pill" data-diff="hard" onclick="setTriviaDiff(this,'hard')">Hard</button>
+      </div>
+    </div>
+    <div class="trivia-filter-group trivia-type-group">
+      <span class="trivia-filter-label">Type</span>
+      <div class="deck-tabs-container">
+        <button class="deck-tabs-nav" id="triviaTypeNavPrev" onclick="scrollTriviaType(-1)" title="Previous">&#8592;</button>
+        <div class="deck-tabs-scroll" id="triviaTypeScroll">
+          <button class="trivia-pill active" data-type="" onclick="setTriviaType(this,'')">Both</button>
+          <button class="trivia-pill" data-type="multiple" onclick="setTriviaType(this,'multiple')">Multiple Choice</button>
+          <button class="trivia-pill" data-type="boolean" onclick="setTriviaType(this,'boolean')">True / False</button>
+        </div>
+        <button class="deck-tabs-nav" id="triviaTypeNavNext" onclick="scrollTriviaType(1)" title="Next">&#8594;</button>
+      </div>
+    </div>
+  </div>
+  <!-- Categories carousel -->
+  <div class="carousel-shell">
+    <div class="carousel-header">
+      <span class="carousel-count" id="triviaCatCount">24 categories · Select to play</span>
+      <div class="carousel-arrows">
+        <button class="carr-btn" id="triviaCatPrev" onclick="triviaCatPrev()" title="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="carr-btn" id="triviaCatNext" onclick="triviaCatNext()" title="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+    <div class="carousel-viewport" id="triviaCatViewport">
+      <div class="carousel-track" id="triviaCatTrack"></div>
+    </div>
+  </div>
+  <div style="max-width:1100px;margin:2rem auto 0;text-align:center;">
+    <button class="btn-accent" onclick="fetchTrivia(null)">🎲 Random Trivia</button>
+  </div>
+</section>
+<!-- Trivia Game Modal -->
+<div class="trivia-modal-overlay" id="triviaModalOverlay" onclick="closeTriviaModal(event)">
+  <div class="trivia-modal" id="triviaModal">
+    <div class="trivia-modal-head">
+      <span class="trivia-modal-title" id="triviaModalTitle">Live Trivia</span>
+      <button class="occasion-modal-close" onclick="closeTriviaModal()" title="Close">✕</button>
+    </div>
+    <div class="trivia-modal-body">
+      <div class="trivia-loading" id="triviaLoading" style="display:none">
+        <div class="trivia-spinner"></div>
+        <p>Fetching questions…</p>
+      </div>
+      <div class="trivia-error" id="triviaError" style="display:none">
+        <p>⚠️ Couldn't load questions. Check your connection and try again.</p>
+        <button class="btn-ghost" onclick="fetchTrivia(triviaState.catId)" style="margin-top:1rem;cursor:none">Retry</button>
+      </div>
+      <div id="triviaActive" style="display:none">
+        <div class="progress-wrap" style="margin-bottom:1rem;">
+          <div class="progress-label">
+            <span id="triviaProgressLabel">Question 1 of 10</span>
+            <span id="triviaScoreLabel" style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text3)">Score: 0</span>
+          </div>
+          <div class="progress-bar"><div class="progress-fill" id="triviaProgressFill" style="width:10%"></div></div>
+        </div>
+        <div class="q-card-wrap" style="margin-bottom:1rem;">
+          <div class="q-card entering" id="triviaCard">
+            <div class="q-meta" style="margin-bottom:0.75rem;">
+              <span class="q-category" id="triviaCatBadge">General Knowledge</span>
+              <span class="q-counter" id="triviaCardNum">01</span>
+            </div>
+            <div style="display:flex;gap:0.4rem;margin-bottom:0.85rem;flex-wrap:wrap;" id="triviaBadgeRow"></div>
+            <div class="q-text" id="triviaQText"></div>
+            <div class="trivia-answers" id="triviaAnswers"></div>
+            <div class="trivia-result" id="triviaResult" style="display:none"></div>
+          </div>
+        </div>
+        <div class="q-actions">
+          <button class="btn-next" id="triviaNxtBtn" onclick="triviaNext()" disabled>Next <span class="arrow">→</span></button>
+          <button class="btn-shuffle" onclick="fetchTrivia(triviaState.catId)" title="New batch">⇌</button>
+        </div>
+      </div>
+      <div class="trivia-end" id="triviaEnd" style="display:none">
+        <div class="trivia-end-score" id="triviaEndScore">0/10</div>
+        <div class="trivia-end-msg" id="triviaEndMsg">Well played!</div>
+        <div class="q-actions" style="justify-content:center;margin-top:1.5rem">
+          <button class="btn-primary" onclick="fetchTrivia(triviaState.catId)">Play Again <span class="arrow">→</span></button>
+          <button class="btn-ghost" onclick="closeTriviaModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="saved-section" id="saved">
   <div class="saved-inner">
     <div class="section-header">
       <span class="section-label">your collection</span>
@@ -1339,6 +1607,17 @@ document.addEventListener('DOMContentLoaded', () => {
   animateCounters();
   initRapidBlobs();
   initParallax();
+  initTriviaCarousel();
+  
+  // Add scroll listeners for carousels
+  const deckScroll = document.getElementById('deckTabsScroll');
+  if (deckScroll) {
+    deckScroll.addEventListener('scroll', updateDeckTabsButtons);
+  }
+  const topicsScroll = document.getElementById('topicsFilterScroll');
+  if (topicsScroll) {
+    topicsScroll.addEventListener('scroll', updateTopicsFilterButtons);
+  }
 });
 
 /* CURSOR */
@@ -1376,6 +1655,23 @@ function updateThemeBtn() {
   const btn = document.getElementById('themeToggle');
   btn.textContent = document.documentElement.dataset.theme === 'light' ? '🌙' : '☀️';
 }
+
+/* MOBILE MENU */
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('active');
+}
+function closeMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.remove('active');
+}
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('mobileMenu');
+  const hamburger = document.getElementById('menuToggle');
+  if (menu && hamburger && !menu.contains(e.target) && !hamburger.contains(e.target)) {
+    menu.classList.remove('active');
+  }
+});
 
 /* QUOTE */
 function initQuote() {
@@ -1488,10 +1784,26 @@ const DECKS = [
 ];
 
 function initDeckTabs() {
-  const wrap = document.getElementById('deckTabs');
+  const wrap = document.getElementById('deckTabsScroll');
   wrap.innerHTML = DECKS.map(d =>
     `<button class="deck-tab${d.id === 'explore' ? ' active' : ''}" onclick="switchDeck('${d.id}')">${d.label}</button>`
   ).join('');
+  updateDeckTabsButtons();
+}
+function updateDeckTabsButtons() {
+  const scroll = document.getElementById('deckTabsScroll');
+  const prev = document.getElementById('deckTabsPrev');
+  const next = document.getElementById('deckTabsNext');
+  if (!scroll) return;
+  prev.disabled = scroll.scrollLeft === 0;
+  next.disabled = scroll.scrollLeft + scroll.offsetWidth >= scroll.scrollWidth - 5;
+}
+function scrollDeckTabs(dir) {
+  const scroll = document.getElementById('deckTabsScroll');
+  if (!scroll) return;
+  const scrollAmount = 200;
+  scroll.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+  setTimeout(updateDeckTabsButtons, 400);
 }
 function switchDeck(id) {
   currentDeck = id;
@@ -1694,8 +2006,14 @@ function setUseCase(key) {
   if (!data) return;
   document.getElementById('crTitle').textContent = data.title;
   document.getElementById('crList').innerHTML = data.questions.map(q => `<li>${q}</li>`).join('');
-  document.getElementById('contextResult').classList.add('show');
+  document.getElementById('occasionModalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
   playClick();
+}
+function closeOccasionModal(e) {
+  if (e && e.target !== document.getElementById('occasionModalOverlay')) return;
+  document.getElementById('occasionModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 /* TOPICS CAROUSEL */
@@ -1705,13 +2023,29 @@ let carouselPage = 0;
 let carouselItems = [];
 
 function initTopics() {
-  const filterWrap = document.getElementById('topicsFilter');
+  const filterWrap = document.getElementById('topicsFilterScroll');
   filterWrap.innerHTML = CAT_FILTERS.map(cat =>
     `<button class="filter-btn${cat === 'all' ? ' active' : ''}" onclick="filterTopics('${cat}')">
       ${cat === 'all' ? '&#10022; All' : CATEGORIES[cat].emoji + ' ' + CATEGORIES[cat].label}
     </button>`
   ).join('');
   buildCarousel();
+  updateTopicsFilterButtons();
+}
+function updateTopicsFilterButtons() {
+  const scroll = document.getElementById('topicsFilterScroll');
+  const prev = document.getElementById('topicsFilterPrev');
+  const next = document.getElementById('topicsFilterNext');
+  if (!scroll) return;
+  prev.disabled = scroll.scrollLeft === 0;
+  next.disabled = scroll.scrollLeft + scroll.offsetWidth >= scroll.scrollWidth - 5;
+}
+function scrollTopicsFilter(dir) {
+  const scroll = document.getElementById('topicsFilterScroll');
+  if (!scroll) return;
+  const scrollAmount = 200;
+  scroll.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+  setTimeout(updateTopicsFilterButtons, 400);
 }
 
 function filterTopics(cat) {
@@ -1721,6 +2055,7 @@ function filterTopics(cat) {
     b.classList.toggle('active', CAT_FILTERS[i] === cat);
   });
   buildCarousel();
+  updateTopicsFilterButtons();
 }
 
 function buildCarousel() {
@@ -1784,6 +2119,11 @@ function carouselPrev() {
 function goToPage(i) { carouselPage = i; renderCarouselPage(); }
 
 document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('occasionModalOverlay').classList.remove('open');
+    document.getElementById('triviaModalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
   const topicsEl = document.getElementById('topics');
   const rect = topicsEl.getBoundingClientRect();
   if (rect.top < window.innerHeight && rect.bottom > 0) {
@@ -1967,6 +2307,271 @@ function initParallax() {
     frame++;
     if (frame > target.length * 4 + 10) { el.textContent = target; clearInterval(interval); }
   }, 50);
+})();
+/* ============================
+   OPEN TRIVIA DB (OpenTDB)
+   ============================ */
+const OTDB_CATS = [
+  {id:9,  label:'General Knowledge',    emoji:'🧠', color:'#0ea5e9'},
+  {id:10, label:'Books',                emoji:'📚', color:'#7c3aed'},
+  {id:11, label:'Film',                 emoji:'🎬', color:'#ec4899'},
+  {id:12, label:'Music',                emoji:'🎵', color:'#f59e0b'},
+  {id:13, label:'Musicals & Theatre',   emoji:'🎭', color:'#a855f7'},
+  {id:14, label:'Television',           emoji:'📺', color:'#06b6d4'},
+  {id:15, label:'Video Games',          emoji:'🎮', color:'#16a34a'},
+  {id:16, label:'Board Games',          emoji:'♟️', color:'#92400e'},
+  {id:17, label:'Science & Nature',     emoji:'🔬', color:'#0d9488'},
+  {id:18, label:'Computers',            emoji:'💻', color:'#3b82f6'},
+  {id:19, label:'Mathematics',          emoji:'📐', color:'#f97316'},
+  {id:20, label:'Mythology',            emoji:'⚡', color:'#dc2626'},
+  {id:21, label:'Sports',               emoji:'⚽', color:'#16a34a'},
+  {id:22, label:'Geography',            emoji:'🌍', color:'#0ea5e9'},
+  {id:23, label:'History',              emoji:'📜', color:'#a855f7'},
+  {id:24, label:'Politics',             emoji:'🏛️', color:'#ff3d00'},
+  {id:25, label:'Art',                  emoji:'🎨', color:'#7c3aed'},
+  {id:26, label:'Celebrities',          emoji:'⭐', color:'#f59e0b'},
+  {id:27, label:'Animals',              emoji:'🦁', color:'#16a34a'},
+  {id:28, label:'Vehicles',             emoji:'🚗', color:'#64748b'},
+  {id:29, label:'Comics',               emoji:'💥', color:'#ec4899'},
+  {id:30, label:'Gadgets',              emoji:'🔧', color:'#06b6d4'},
+  {id:31, label:'Anime & Manga',        emoji:'⛩️', color:'#db2777'},
+  {id:32, label:'Cartoon & Animations', emoji:'🎪', color:'#f59e0b'},
+];
+
+const triviaState = {
+  catId: null,
+  diff: '',
+  type: '',
+  questions: [],
+  index: 0,
+  score: 0,
+  answered: false,
+  token: localStorage.getItem('otdb_token') || null,
+};
+
+let triviaCatPage = 0;
+
+function initTriviaCarousel() {
+  const track = document.getElementById('triviaCatTrack');
+  const total = OTDB_CATS.length;
+  track.style.transition = 'none';
+  track.style.width = `${total * 100}%`;
+  track.innerHTML = OTDB_CATS.map(cat =>
+    `<div class="topic-pill" onclick="fetchTrivia(${cat.id})" style="min-width:${100/total}%;max-width:${100/total}%;border-left:3px solid ${cat.color}55;cursor:none;">
+      <span class="topic-num" style="color:${cat.color};font-size:1rem;">${cat.emoji}</span>
+      <div>
+        <div class="topic-name">${cat.label}</div>
+        <div class="topic-cat" style="color:${cat.color}">OpenTDB · Play →</div>
+      </div>
+    </div>`
+  ).join('');
+  triviaCatPage = 0;
+  renderTriviaCatPage(false);
+}
+
+function renderTriviaCatPage(animate) {
+  const track = document.getElementById('triviaCatTrack');
+  const total = OTDB_CATS.length;
+  const pct = triviaCatPage * (100 / total);
+  track.style.transition = animate ? 'transform 0.45s cubic-bezier(0.4,0,0.2,1)' : 'none';
+  track.style.transform = `translateX(-${pct}%)`;
+  document.getElementById('triviaCatCount').textContent = `Category ${triviaCatPage + 1} of ${total} · ${OTDB_CATS[triviaCatPage].label}`;
+  document.getElementById('triviaCatPrev').disabled = triviaCatPage === 0;
+  document.getElementById('triviaCatNext').disabled = triviaCatPage >= total - 1;
+}
+
+function triviaCatPrev() { if (triviaCatPage > 0) { triviaCatPage--; renderTriviaCatPage(true); playClick(); } }
+function triviaCatNext() { if (triviaCatPage < OTDB_CATS.length - 1) { triviaCatPage++; renderTriviaCatPage(true); playClick(); } }
+function triviaCatGoTo(i) { triviaCatPage = i; renderTriviaCatPage(true); playClick(); }
+
+function setTriviaDiff(btn, val) {
+  triviaState.diff = val;
+  document.querySelectorAll('[data-diff]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function setTriviaType(btn, val) {
+  triviaState.type = val;
+  document.querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+async function getOtdbToken() {
+  if (triviaState.token) return triviaState.token;
+  try {
+    const res = await fetch('https://opentdb.com/api_token.php?command=request');
+    const data = await res.json();
+    if (data.response_code === 0) {
+      triviaState.token = data.token;
+      localStorage.setItem('otdb_token', data.token);
+      return data.token;
+    }
+  } catch(e) {}
+  return null;
+}
+
+async function resetOtdbToken() {
+  triviaState.token = null;
+  localStorage.removeItem('otdb_token');
+  await getOtdbToken();
+}
+
+function scrollTriviaType(dir) {
+  const scroll = document.getElementById('triviaTypeScroll');
+  if (!scroll) return;
+  scroll.scrollBy({ left: dir * 200, behavior: 'smooth' });
+}
+
+function openTriviaModal(title) {
+  const overlay = document.getElementById('triviaModalOverlay');
+  if (title) document.getElementById('triviaModalTitle').textContent = title;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTriviaModal(e) {
+  if (e && e.target !== document.getElementById('triviaModalOverlay')) return;
+  document.getElementById('triviaModalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function fetchTrivia(catId) {
+  triviaState.catId = catId;
+  triviaState.index = 0;
+  triviaState.score = 0;
+  triviaState.answered = false;
+  const cat = OTDB_CATS.find(c => c.id === catId);
+  openTriviaModal(cat ? cat.emoji + ' ' + cat.label : '🎲 Random Trivia');
+  showTriviaState('loading');
+  try {
+    let token = await getOtdbToken();
+    let url = `https://opentdb.com/api.php?amount=10`;
+    if (catId) url += `&category=${catId}`;
+    if (triviaState.diff) url += `&difficulty=${triviaState.diff}`;
+    if (triviaState.type) url += `&type=${triviaState.type}`;
+    if (token) url += `&token=${token}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.response_code === 4) { await resetOtdbToken(); return fetchTrivia(catId); }
+    if (data.response_code !== 0 || !data.results?.length) { showTriviaState('error'); return; }
+    triviaState.questions = data.results;
+    showTriviaState('active');
+    renderTriviaQuestion();
+  } catch(e) {
+    showTriviaState('error');
+  }
+}
+
+function showTriviaState(state) {
+  document.getElementById('triviaLoading').style.display = state === 'loading' ? 'flex'  : 'none';
+  document.getElementById('triviaError').style.display   = state === 'error'   ? 'block' : 'none';
+  document.getElementById('triviaActive').style.display  = state === 'active'  ? 'block' : 'none';
+  document.getElementById('triviaEnd').style.display     = state === 'end'     ? 'block' : 'none';
+}
+
+function resetTrivia() { closeTriviaModal(); }
+
+function decodeHtml(html) {
+  const txt = document.createElement('textarea');
+  txt.innerHTML = html;
+  return txt.value;
+}
+
+function renderTriviaQuestion() {
+  const q = triviaState.questions[triviaState.index];
+  if (!q) return;
+  triviaState.answered = false;
+  const catInfo = OTDB_CATS.find(c => c.id === triviaState.catId) || {color:'#0ea5e9'};
+  const card = document.getElementById('triviaCard');
+  card.style.setProperty('--q-color', catInfo.color);
+  const catBadge = document.getElementById('triviaCatBadge');
+  catBadge.textContent = q.category;
+  catBadge.style.background = catInfo.color + '18';
+  catBadge.style.color = catInfo.color;
+  document.getElementById('triviaCardNum').textContent = String(triviaState.index + 1).padStart(2, '0');
+  document.getElementById('triviaQText').textContent = decodeHtml(q.question);
+  const diffColors = {easy:'#16a34a', medium:'#f59e0b', hard:'#dc2626'};
+  const dc = diffColors[q.difficulty] || '#64748b';
+  document.getElementById('triviaBadgeRow').innerHTML =
+    `<span class="trivia-badge" style="background:${dc}18;color:${dc}">${q.difficulty}</span>
+     <span class="trivia-badge">${q.type === 'boolean' ? 'True / False' : 'Multiple Choice'}</span>`;
+  const correct = decodeHtml(q.correct_answer);
+  let answers = q.type === 'boolean'
+    ? ['True', 'False']
+    : [...q.incorrect_answers.map(decodeHtml), correct].sort(() => Math.random() - 0.5);
+  const letters = ['A','B','C','D'];
+  document.getElementById('triviaAnswers').innerHTML = answers.map((ans, i) => {
+    const escaped = ans.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    const ltr = q.type === 'boolean' ? (i === 0 ? 'T' : 'F') : letters[i];
+    return `<button class="trivia-ans-btn" data-answer="${escaped}" onclick="selectTriviaAnswer(this)">
+      <span class="trivia-ans-letter">${ltr}</span><span>${ans}</span>
+    </button>`;
+  }).join('');
+  const resultEl = document.getElementById('triviaResult');
+  resultEl.style.display = 'none';
+  resultEl.className = 'trivia-result';
+  document.getElementById('triviaNxtBtn').disabled = true;
+  const total = triviaState.questions.length;
+  const pct = Math.round(((triviaState.index + 1) / total) * 100);
+  document.getElementById('triviaProgressLabel').textContent = `Question ${triviaState.index + 1} of ${total}`;
+  document.getElementById('triviaScoreLabel').textContent = `Score: ${triviaState.score}`;
+  document.getElementById('triviaProgressFill').style.width = pct + '%';
+  card.classList.remove('entering');
+  void card.offsetWidth;
+  card.classList.add('entering');
+}
+
+function selectTriviaAnswer(btn) {
+  if (triviaState.answered) return;
+  triviaState.answered = true;
+  const q = triviaState.questions[triviaState.index];
+  const correct = decodeHtml(q.correct_answer);
+  const selected = btn.dataset.answer;
+  document.querySelectorAll('.trivia-ans-btn').forEach(b => {
+    b.disabled = true;
+    if (b.dataset.answer === correct) b.classList.add('correct');
+  });
+  const isCorrect = selected === correct;
+  if (!isCorrect) btn.classList.add('wrong');
+  else { triviaState.score++; playPing(); spawnConfetti(); }
+  const resultEl = document.getElementById('triviaResult');
+  resultEl.style.display = 'block';
+  resultEl.className = `trivia-result ${isCorrect ? 'correct-msg' : 'wrong-msg'}`;
+  resultEl.innerHTML = isCorrect ? '✓ Correct!' : `✗ The answer was: <strong>${correct}</strong>`;
+  document.getElementById('triviaScoreLabel').textContent = `Score: ${triviaState.score}`;
+  document.getElementById('triviaNxtBtn').disabled = false;
+  playClick();
+}
+
+function triviaNext() {
+  triviaState.index++;
+  if (triviaState.index >= triviaState.questions.length) { showTriviaEnd(); return; }
+  renderTriviaQuestion();
+  playClick();
+}
+
+function showTriviaEnd() {
+  const total = triviaState.questions.length;
+  const pct = Math.round((triviaState.score / total) * 100);
+  document.getElementById('triviaEndScore').textContent = `${triviaState.score}/${total}`;
+  const msgs = ['Keep practising!', 'Not bad!', 'Well played!', 'Impressive!', 'Genius-level!'];
+  document.getElementById('triviaEndMsg').textContent = msgs[Math.min(Math.floor(pct / 21), msgs.length - 1)];
+  showTriviaState('end');
+  if (pct >= 70) { for (let i = 0; i < 15; i++) setTimeout(spawnConfetti, i * 100); }
+}
+
+/* touch swipe for trivia carousel */
+(function() {
+  let startX = 0;
+  const vp = () => document.getElementById('triviaCatViewport');
+  document.addEventListener('touchstart', e => {
+    if (vp() && vp().contains(e.target)) startX = e.touches[0].clientX;
+  }, {passive:true});
+  document.addEventListener('touchend', e => {
+    if (!vp() || !vp().contains(e.target)) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) { dx < 0 ? triviaCatNext() : triviaCatPrev(); }
+  }, {passive:true});
 })();
 </script>
 </body>
